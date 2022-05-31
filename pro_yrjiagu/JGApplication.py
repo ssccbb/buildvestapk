@@ -170,6 +170,6 @@ class JGApplication:
         if not os.path.isfile(apk_file):
             print(f"没有在当前目录找到{apk_file}文件")
             return True
-        if not os.path.isfile():
+        if not os.path.isfile(signer_file):
             print(f"没有在当前目录找到{signer_file}.jks签名文件")
             return True
