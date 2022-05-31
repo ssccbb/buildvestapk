@@ -1,5 +1,6 @@
 import os
 
+import constants
 from plugin.FilePlugin import FilePlugin
 
 
@@ -14,8 +15,9 @@ class HookModulePlugin:
         :param new_package:
         :return:
         """
-        FilePlugin.replace_file_content(r"HookApplication\Proxy_Core", old_package, new_package)
-        FilePlugin.replace_folder_name(r"HookApplication\Proxy_Core", old_package, new_package)
+        path_proxy_core = os.path.join(constants.path_self, "pro_yrjiagu/HookApplication/Proxy_Core")
+        FilePlugin.replace_file_content(path_proxy_core, old_package, new_package)
+        FilePlugin.replace_folder_name(path_proxy_core, old_package, new_package)
 
     @staticmethod
     def make_proxy_core_app(gradle_path="gradle", clean_cache=False):

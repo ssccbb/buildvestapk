@@ -62,7 +62,7 @@ class JGApplication:
         APKPlugin.change_jar_to_dex("proxy_aar_temp/classes.jar")
         # 壳加入源apk进行打包
         FilePlugin.move_file("proxy_aar_temp/classes.dex", f"{apk_dir}/classes.dex")
-        FilePlugin.remove_path_file("proxy_aar_temp")
+        # FilePlugin.remove_path_file("proxy_aar_temp")
         FilePlugin.remove_path_file(proxy_aar_file)
         # 重打包
         ZipPlugin.make_zip_dir(apk_dir, apk_file_xed_name)
@@ -158,13 +158,19 @@ class JGApplication:
             if path.find(".dex") != -1:
                 aesPlugin.encrypt_byte_by_jar(path, path.replace(".dex", ".xed"))
         else:
-            for root, dirs, files in os.walk(path):
-                for file in files:
-                    file_path = os.path.join(root, file)  # 原来的文件路径
-                    if file_path.find(".dex") != -1:
-                        # bytes = FilePlugin.read_byte_from_file(file_path)
-                        aesPlugin.encrypt_byte_by_jar(file_path, file_path.replace(".dex", ".xed"))
-                        os.remove(file_path)
+            # for root, dirs, files in os.walk(path):
+            #     for file in files:
+            #         file_path = os.path.join(root, file)  # 原来的文件路径
+            #         if file_path.find(".dex") != -1:
+            #             # bytes = FilePlugin.read_byte_from_file(file_path)
+            #             aesPlugin.encrypt_byte_by_jar(file_path, file_path.replace(".dex", ".xed"))
+            #             os.remove(file_path)
+            dex_zip = os.path.join(path, "class_dexs.zip")
+            has_dex = ZipPlugin.make_zip_dir(path, dex_zip, ".xed")
+            if has_dex:
+                aesPlugin.encrypt_byte_by_jar(dex_zip, dex_zip.replace(".zip", ".piz"))
+                # aesPlugin.decrypt_byte_by_java(dex_zip.replace(".zip", ".piz"), dex_zip.replace(".zip", "_decrypt.zip"))
+                os.remove(dex_zip)
 
     def safe_check(self, apk_file, signer_file):
         if not os.path.isfile(apk_file):

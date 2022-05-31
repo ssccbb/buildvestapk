@@ -6,7 +6,7 @@ import zipfile
 class ZipPlugin:
 
     @staticmethod
-    def make_zip_dir(source_dir, zip_file_path=None, contain_root=False):
+    def make_zip_dir(source_dir, zip_file_path=None, file_filter_type=None, contain_root=False):
         """
         压缩指定文件夹
         :param source_dir:
@@ -17,13 +17,20 @@ class ZipPlugin:
         if zip_file_path is None:
             zip_file_path = source_dir + '.zip'
         zip_file = zipfile.ZipFile(zip_file_path, 'w', zipfile.ZIP_DEFLATED)
+        has_dex_file = False
         for root, dirs, files in os.walk(source_dir):
             for f in files:
                 filename = os.path.join(root, f)
-                # if contain_root is False:
-                zip_file_name = filename.replace(source_dir + "\\", "")
-                zip_file.write(filename, zip_file_name, compress_type=zipfile.ZIP_DEFLATED)
+                zip_file_name = filename.replace(source_dir + "/", "")
+                if file_filter_type is None:
+                    has_dex_file = True
+                    zip_file.write(filename, zip_file_name, compress_type=zipfile.ZIP_DEFLATED)
+                else:
+                    if filename.find(file_filter_type) != -1:
+                        zip_file.write(filename, zip_file_name, compress_type=zipfile.ZIP_DEFLATED)
+                        has_dex_file = True
         zip_file.close()
+        return has_dex_file
 
     @staticmethod
     def make_zip_file(source_file, zip_file_path=None):

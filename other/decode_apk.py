@@ -5,7 +5,7 @@ from plugin.FilePlugin import FilePlugin
 
 apktool = os.path.join(constants.path_self, "jar")
 os.chdir(apktool)
-src_file = os.path.join(constants.path_self, "pro_yrjiagu/temp_xed.apk")
+src_file = os.path.join(constants.path_self, "pro_yrjiagu/temp_xed_sign.apk")
 tar_file = src_file.replace(".apk", "")
 if os.path.exists(tar_file):
     FilePlugin.remove_path_file(tar_file)

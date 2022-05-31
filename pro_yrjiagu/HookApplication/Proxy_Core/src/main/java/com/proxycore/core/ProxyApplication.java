@@ -51,9 +51,10 @@ public class ProxyApplication extends Application {
         if (!dexDir.exists() || dexDir.list().length == 0) {
             Zip.unZip(apkFile, versionDir);
             File[] files = versionDir.listFiles();
-            if (files != null && files.length > 0)
+            if (files != null && files.length > 0) {
                 for (File file : files) {
                     String name = file.getName();
+                    //初版本dex转xed方式
                     if (name.endsWith(".xed")) {
                         try {
                             byte[] bytes = Utils.getBytes(file);
@@ -76,7 +77,36 @@ public class ProxyApplication extends Application {
                             e.printStackTrace();
                         }
                     }
+//                     //压缩体积所有dex文件压缩成piz形式
+//                     if (name.endsWith(".piz")) {
+//                         try {
+//                             byte[] bytes = Utils.getBytes(file);
+//                             byte[] decrypt = EncryptUtils.getInstance().decrypt(bytes);
+//                             if (!dexDir.exists()) {
+//                                 dexDir.mkdirs();
+//                             }
+//                             File zipFile = new File(dexDir, file.getName().replace(".piz",".zip"));
+//                             FileOutputStream fos = new FileOutputStream(fileDex);
+//                             fos.write(decrypt);
+//                             fos.flush();
+//                             fos.close();
+//                             Zip.unzip(zipFile, versionDir);
+//                             File[] files = versionDir.listFiles();
+//                             File[] files = versionDir.listFiles();
+//                             if (files != null && files.length > 0) {
+//                                 for (File file : files) {
+//                                     String name = file.getName();
+//                                     //初版本dex转xed方式
+//                                     if (name.endsWith(".xed")) {
+//                                     }
+//                                 }
+//                             }
+//                         } catch (Exception e) {
+//                             e.printStackTrace();
+//                         }
+//                     }
                 }
+            }
         } else {
             //已经解密过了
             for (File dex : dexDir.listFiles()) {
