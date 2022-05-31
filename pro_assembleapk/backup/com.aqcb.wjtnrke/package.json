@@ -1,0 +1,28 @@
+{
+  "com.aqcb.wjtnrke": {
+    "packageName": "com.aqcb.wjtnrke",
+    "appName": "花间",
+    "versionName": "13.7.50",
+    "versionCode": "13750",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "ydkey",
+    "qqKey": [
+      "101997709",
+      "b74e7787febdae021ad16a935250655b"
+    ],
+    "wechatKey": [
+      "wxfc3cea11b77c695d",
+      "f49167a65892a31dd1e16eff4f2b42ea"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

@@ -1,4 +1,4 @@
-import os
+import os, constants
 from random import Random
 
 from cryptography.hazmat.primitives.ciphers.algorithms import AES
@@ -61,7 +61,8 @@ class AESPlugin:
 
     # 加密文件
     def encrypt_byte_by_jar(self, file, encrypt_file):
-        cmd = f'java -jar lib\\endecrypt_tool.jar {file} {encrypt_file} {self.key} {self.iv} encrypt'
+        path_endecrypt = os.path.join(constants.path_self, "jar/encrypt_tool.jar")
+        cmd = f'java -jar {path_endecrypt} {file} {encrypt_file} {self.key} {self.iv} encrypt'
         if os.system(cmd) == 0:
             print("文件加密成功")
         else:
@@ -69,7 +70,8 @@ class AESPlugin:
 
     # 解密文件
     def decrypt_byte_by_java(self, file, encrypt_file):
-        cmd = f'java -jar lib\\endecrypt_tool.jar {file} {encrypt_file} {self.key} {self.iv} decrypt'
+        path_endecrypt = os.path.join(constants.path_self, "jar/encrypt_tool.jar")
+        cmd = f'java -jar {path_endecrypt} {file} {encrypt_file} {self.key} {self.iv} decrypt'
         if os.system(cmd) == 0:
             print("文件解密成功")
         else:

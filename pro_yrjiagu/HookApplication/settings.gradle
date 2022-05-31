@@ -1,0 +1,4 @@
+rootProject.name = "HookApplication"
+include ':Proxy_Tools'
+include ':Proxy_Core'
+include ':Xml2Axml'

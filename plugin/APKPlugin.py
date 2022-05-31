@@ -2,6 +2,8 @@ import os
 import xml.dom.minidom
 from binascii import a2b_hex
 
+import constants
+
 
 class APKPlugin:
 
@@ -17,7 +19,8 @@ class APKPlugin:
             output_dir = apk_file_name.replace(".apk", "")
         if not os.path.exists(output_dir):
             print("开始反编译原apk...")
-            cmd = f'java -jar lib\\apk_tool.jar d {apk_file_name} -o {output_dir}'
+            path_apk_tool = os.path.join(constants.path_self, "jar/apk_tool.jar")
+            cmd = f'java -jar {path_apk_tool} d {apk_file_name} -o {output_dir}'
             if os.system(cmd) == 0:
                 print("成功反编译原apk")
             else:
@@ -35,7 +38,8 @@ class APKPlugin:
         if apk_file is None:
             apk_file = apk_file_dir + ".apk"
         print("开始打包新的apk...")
-        cmd_zip = f'java -jar lib\\apk_tool.jar b {apk_file_dir} -o {apk_file}'
+        path_apk_tool = os.path.join(constants.path_self, "jar/apk_tool.jar")
+        cmd_zip = f'java -jar {path_apk_tool} b {apk_file_dir} -o {apk_file}'
         if os.system(cmd_zip) == 0:
             print("成功打包新的apk")
         else:
@@ -54,7 +58,8 @@ class APKPlugin:
         if signer_apk_file is None:
             signer_apk_file = apk_file.replace(".apk", "_signer.apk")
         print("开始为apk签名...")
-        cmd_signer = f'java -jar lib\\apk_signer.jar sign  --ks {signer_file} {signer_content} --out {signer_apk_file} {apk_file}'
+        path_apk_signer = os.path.join(constants.path_self, "jar/apksigner.jar")
+        cmd_signer = f'java -jar {path_apk_signer} sign  --ks {signer_file} {signer_content} --out {signer_apk_file} {apk_file}'
         if os.system(cmd_signer) == 0:
             print("成功为apk签名")
         else:
@@ -71,7 +76,8 @@ class APKPlugin:
         """
         if dex_file is None:
             jar_file = dex_file.replace(".dex", ".jar")
-        cmd = f'dex2jar-2.0\\d2j-dex2jar.bat  --output {jar_file} {dex_file}'
+        path_dex2jar = os.path.join(constants.path_self, "dex2jar-2.0/d2j-dex2jar.bat")
+        cmd = f'{path_dex2jar}  --output {jar_file} {dex_file}'
         if os.system(cmd) == 0:
             print("成功把dex文件转化为jar文件")
         else:
@@ -112,7 +118,7 @@ class APKPlugin:
             hex_content = a2b_hex(hex_content)
             fw = open(new_arsc_file, 'wb')
             fw.write(hex_content)
-            fw.close();
+            fw.close()
         except Exception as e:
             print(e.args)
 
@@ -126,7 +132,8 @@ class APKPlugin:
         """
         if par_file is None:
             par_file = axml_file.replace(".xml", "_new.xml")
-        cmd = f'java -jar lib\\xml2axml.jar d {axml_file} {par_file}'
+        path_xml2axml = os.path.join(constants.path_self, "jar/xml2axml.jar")
+        cmd = f'java -jar {path_xml2axml} d {axml_file} {par_file}'
         if os.system(cmd) == 0:
             print("成功解析axml文件")
         else:
@@ -142,7 +149,8 @@ class APKPlugin:
         """
         if par_file is None:
             par_file = axml_file.replace(".xml", "_new.xml")
-        cmd = f'java -jar lib\\xml2axml.jar e {axml_file} {par_file}'
+        path_xml2axml = os.path.join(constants.path_self, "jar/xml2axml.jar")
+        cmd = f'java -jar {path_xml2axml} e {axml_file} {par_file}'
         if os.system(cmd) == 0:
             print("成功加密axml文件")
         else:
