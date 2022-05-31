@@ -21,17 +21,13 @@ class JGApplication:
         创建加固apk文件，会自动根据apk本身的包名动态修改壳app的包名路径，还支持修改AES加密的key,iv
         :return:
         """
-        if not os.path.isfile(apk_file_name):
-            print(f"没有在当前目录找到{apk_file_name}文件")
-            return
-        if not os.path.isfile(self.signer_file):
-            print(f"没有在当前目录找到{self.signer_file}.jks签名文件")
+        if self.safe_check(apk_file_name, self.signer_file):
             return
         apk_dir = apk_file_name.replace(".apk", "")
         apk_file_xed_name = apk_file_name.replace(".apk", "_xed.apk")
         FilePlugin.remove_path_file(apk_dir)
         ZipPlugin.un_zip_file(apk_file_name, apk_dir)
-        axml_file = f"{apk_dir}\\AndroidManifest.xml"
+        axml_file = f"{apk_dir}/AndroidManifest.xml"
         axml_decode_file = "AndroidManifest_decode.xml"
         # 解密axl
         APKPlugin.decode_amxl(axml_file, axml_decode_file)
@@ -43,23 +39,32 @@ class JGApplication:
         package_middle = "proxy" + package_middle
         proxy_aar_file = f"{package_middle}.aar"
         proxy_application_name = f"com.{package_middle}.core.ProxyApplication"
-        # 替换axml
+        # 替换axml 主要是向清单文件内写入壳application
         self.__change_apk_manifest_txt(axml_decode_file, proxy_application_name, apk_package, app_version_name)
+        # 回加密清单文件 这时候axml_file获得的是添加过壳信息的清单文件 用于重压包
         APKPlugin.encode_amxl(axml_decode_file, axml_file)
         FilePlugin.remove_path_file(axml_decode_file)
         # 加密dex文件，保证这里的key,iv和hookapplication//Proxy_Core模块代码里面的key,iv一致
+        # 逐一加密
         self.__encrypt_dex(apk_dir, "1234567890123456", "1234567890123456")
         # 修改AndroidSDK路径
         FilePlugin.wirte_str_to_file('sdk.dir=' + android_sdk_path, "HookApplication/local.properties")
+        # 修改壳的包名
         HookModulePlugin.change_core_app_package(HookModulePlugin.origin_name, package_middle)
+        # 开始编译aar
         HookModulePlugin.make_proxy_core_app(gradle_path=gradle_path)
         HookModulePlugin.change_core_app_package(package_middle, HookModulePlugin.origin_name)
+        # 移动aar
         FilePlugin.move_file("HookApplication/Proxy_Core/build/outputs/aar/Proxy_Core-release.aar", proxy_aar_file)
+        # 解压aar拿到classes.jar文件
         ZipPlugin.un_zip_file(proxy_aar_file, "proxy_aar_temp")
+        # 转dex文件
         APKPlugin.change_jar_to_dex("proxy_aar_temp/classes.jar")
+        # 壳加入源apk进行打包
         FilePlugin.move_file("proxy_aar_temp/classes.dex", f"{apk_dir}/classes.dex")
         FilePlugin.remove_path_file("proxy_aar_temp")
         FilePlugin.remove_path_file(proxy_aar_file)
+        # 重打包
         ZipPlugin.make_zip_dir(apk_dir, apk_file_xed_name)
         FilePlugin.remove_path_file(apk_dir)
         # 重新签名
@@ -72,22 +77,24 @@ class JGApplication:
         创建加固apk文件，代理app的包名路固定为com.proxycore.core.ProxyApplication
         :return:
         """
-        if not os.path.isfile(os.path.join("./ini", apk_file_name)):
-            print(f"没有在当前目录找到{apk_file_name}文件")
+        if self.safe_check(apk_file_name, self.signer_file):
             return
-        if not os.path.isfile(os.path.join("./ini", self.signer_file)):
-            print(f"没有在当前目录找到{self.signer_file}.jks签名文件")
-            return
-        apk_dir = os.path.join("./tmp", apk_file_name.replace(".apk", ""))
-        apk_file_xed_name = os.path.join("./tmp", apk_file_name.replace(".apk", "_xed.apk"))
+        # apk源文件
+        apk_dir = apk_file_name.replace(".apk", "")
+        # apk修改 dex -> xed 文件
+        apk_file_xed_name = apk_file_name.replace(".apk", "_xed.apk")
         FilePlugin.remove_path_file(apk_dir)
-        ZipPlugin.un_zip_file(os.path.join("./ini", apk_file_name), apk_dir)
+        # 解包源apk
+        ZipPlugin.un_zip_file(apk_file_name, apk_dir)
+        # 拿到安卓清单文件（密文）
         axml_file = f"{apk_dir}/AndroidManifest.xml"
-        axml_decode_file = os.path.join("./tmp", "AndroidManifest_decode.xml")
+        # xml解析之后的清单文（明文）
+        axml_decode_file = "AndroidManifest_decode.xml"
         # 解密axl
         APKPlugin.decode_amxl(axml_file, axml_decode_file)
         APKPlugin.encode_amxl(axml_decode_file, axml_file)
         APKPlugin.decode_amxl(axml_file, axml_decode_file)
+        # 获取包信息
         apk_name, apk_package, app_version_name = APKPlugin.get_apk_info(axml_decode_file)
         # 获取代理自定义代理app的相关参数
         proxy_application_name = "com.proxycore.core.ProxyApplication"
@@ -102,7 +109,7 @@ class JGApplication:
         ZipPlugin.make_zip_dir(apk_dir, apk_file_xed_name)
         FilePlugin.remove_path_file(apk_dir)
         # 重新签名
-        APKPlugin.signer_apk_file(os.path.join("./ini", self.signer_file), self.signer_content, apk_file_xed_name,
+        APKPlugin.signer_apk_file(self.signer_file, self.signer_content, apk_file_xed_name,
                                   apk_file_xed_name.replace("_xed.apk", "_signer.apk"))
         FilePlugin.remove_path_file(apk_file_xed_name)
 
@@ -158,3 +165,11 @@ class JGApplication:
                         # bytes = FilePlugin.read_byte_from_file(file_path)
                         aesPlugin.encrypt_byte_by_jar(file_path, file_path.replace(".dex", ".xed"))
                         os.remove(file_path)
+
+    def safe_check(self, apk_file, signer_file):
+        if not os.path.isfile(apk_file):
+            print(f"没有在当前目录找到{apk_file}文件")
+            return True
+        if not os.path.isfile():
+            print(f"没有在当前目录找到{signer_file}.jks签名文件")
+            return True

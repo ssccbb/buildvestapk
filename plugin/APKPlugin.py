@@ -1,7 +1,7 @@
 import os
 import xml.dom.minidom
 from binascii import a2b_hex
-
+from plugin.FilePlugin import FilePlugin
 import constants
 
 

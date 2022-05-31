@@ -1,27 +1,27 @@
 {
-  "com.bvloa.xtqnwz": {
-    "packageName": "com.bvloa.xtqnwz",
-    "appName": "基准包应用名",
-    "versionName": "13.7.50",
-    "versionCode": "13750",
+  "com.ldytgh.jyr": {
+    "packageName": "com.ldytgh.jyr",
+    "appName": "花间",
+    "versionName": "13.8.00",
+    "versionCode": "13800",
     "channel": "BetaAPPHuajian_1",
-    "ydKey": "77eb935aa1414ee096df379cb69209e1",
+    "ydKey": "ydkey",
     "qqKey": [
-      "102000615",
-      "qdEcppfIgpjNlunR"
+      "101964468",
+      "5c4ba6ca2b06c702ca30430bda195204"
     ],
     "wechatKey": [
-      "wx0a9a525f76f5c6b6",
-      "4ba929bb41124cec5e56aeac9d37fba6"
+      "wx0e6c9c383fe1f8e2",
+      "2de561d73d9df922f14e328cc664e2df"
     ],
     "openinstallKey": "z5yc32",
-    "hideSlogan": true,
+    "hideSlogan": false,
     "hideOneYuan": false,
     "hideQQLogin": false,
     "hideWXLogin": false,
-    "hideSetting": true,
-    "hideGuide": true,
-    "hideTeen": true,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
     "hidePermissionDialog": true,
     "hideDialog": true
   }
