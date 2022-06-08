@@ -12,8 +12,35 @@ import javax.crypto.spec.SecretKeySpec;
  * @time 2021/12/28 11:45
  */
 public class EncryptUtil {
+    private final byte[] IV = "eh7aJlOdHCNsGNcD".getBytes(); // 偏移值
+    private final byte[] KEY = "QUmkLrrISiud6RPU".getBytes(); // 加密使用的key
+    private final String ALGORITHM = "AES/CBC/PKCS5Padding"; // 加密算法
+    private Cipher encryptCipher; // 加密
+    private Cipher decryptCipher; // 解密
 
-    private static final String ALGORITHM = "AES/CBC/PKCS5Padding"; // 加密算法
+    /**
+     * 使用单例
+     */
+    private EncryptUtils() {
+        try {
+            // 初始化加密算法
+            decryptCipher = Cipher.getInstance(ALGORITHM);
+            encryptCipher = Cipher.getInstance(ALGORITHM);
+            SecretKeySpec key = new SecretKeySpec(KEY, "AES");
+            encryptCipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(IV));
+            decryptCipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(IV));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static class SingletonHolder {
+        private static final EncryptUtils INSTANCE = new EncryptUtils();
+    }
+
+    public static EncryptUtils getInstance() {
+        return SingletonHolder.INSTANCE;
+    }
 
     /**
      * 加密
@@ -21,11 +48,8 @@ public class EncryptUtil {
      * @param data
      * @return
      */
-    public static byte[] encryptByte(byte[] data, String key, String iv) {
+    public byte[] encrypt(byte[] data) {
         try {
-            Cipher encryptCipher = Cipher.getInstance(ALGORITHM);
-            SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), "AES");
-            encryptCipher.init(Cipher.ENCRYPT_MODE, secretKeySpec, new IvParameterSpec(iv.getBytes()));
             return encryptCipher.doFinal(data);
         } catch (Exception e) {
             e.printStackTrace();
@@ -39,24 +63,12 @@ public class EncryptUtil {
      * @param data
      * @return
      */
-    public static byte[] decryptByte(byte[] data, String key, String iv) {
+    public byte[] decrypt(byte[] data) {
         try {
-            Cipher decryptCipher = Cipher.getInstance(ALGORITHM);
-            SecretKeySpec secretKeySpec = new SecretKeySpec(key.getBytes(), "AES");
-            decryptCipher.init(Cipher.DECRYPT_MODE, secretKeySpec, new IvParameterSpec(iv.getBytes()));
             return decryptCipher.doFinal(data);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
-    public static byte[] getBytes(File file) throws Exception {
-        RandomAccessFile r = new RandomAccessFile(file, "r");
-        byte[] buffer = new byte[(int) r.length()];
-        r.readFully(buffer);
-        r.close();
-        return buffer;
-    }
-
 }

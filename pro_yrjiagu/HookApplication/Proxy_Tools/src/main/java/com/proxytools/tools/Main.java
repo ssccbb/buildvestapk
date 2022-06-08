@@ -53,24 +53,27 @@ public class Main {
         /**
          * 2、加密apk中所有dex文件
          */
-        File apkFile = new File(apkFileName);
-        File apkTemp = new File("file_output/apk_output/temp");
-        Zip.unZip(apkFile, apkTemp);
+        File apkFile = new File(FILENAME + ".apk");
+        File apkTemp = new File("app/build/outputs/apk/temp");
+        Zip.unZipApk(apkFile, apkTemp);
         File[] dexFiles = apkTemp.listFiles(new FilenameFilter() {
             @Override
             public boolean accept(File file, String s) {
                 return s.endsWith(".dex");
             }
         });
+        File fileDexZip = new File("app/build/outputs/apk/temp/classes.zip");
+        Zip.zip(dexFiles, fileDexZip);
         for (File dex : dexFiles) {
-            byte[] bytes = getBytes(dex);
-            byte[] encrypt = EncryptUtil.encryptByte(bytes, key, iv);
-            FileOutputStream fos = new FileOutputStream(new File(apkTemp, packageName + dex.getName().replace("dex", "xed")));
-            fos.write(encrypt);
-            fos.flush();
-            fos.close();
             dex.delete();
         }
+        byte[] bytes = getBytes(fileDexZip);
+        byte[] encrypt = EncryptUtils.getInstance().encrypt(bytes);
+        FileOutputStream fos = new FileOutputStream(new File(apkTemp, fileDexZip.getName().replace("zip", "piz")));
+        fos.write(encrypt);
+        fos.flush();
+        fos.close();
+        fileDexZip.delete();
 
         /**
          * 3、把classes.dex 放入 apk解压目录 在压缩成apk

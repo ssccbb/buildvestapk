@@ -46,7 +46,7 @@ class JGApplication:
         FilePlugin.remove_path_file(axml_decode_file)
         # 加密dex文件，保证这里的key,iv和hookapplication//Proxy_Core模块代码里面的key,iv一致
         # 逐一加密
-        self.__encrypt_dex(apk_dir, "1234567890123456", "1234567890123456")
+        self.__encrypt_dex(apk_dir, "QUmkLrrISiud6RPU", "eh7aJlOdHCNsGNcD")
         # 修改AndroidSDK路径
         FilePlugin.wirte_str_to_file('sdk.dir=' + android_sdk_path, "HookApplication/local.properties")
         # 修改壳的包名
@@ -103,7 +103,7 @@ class JGApplication:
         APKPlugin.encode_amxl(axml_decode_file, axml_file)
         FilePlugin.remove_path_file(axml_decode_file)
         # 加密dex文件
-        self.__encrypt_dex(apk_dir, "1234567890123456", "1234567890123456")
+        self.__encrypt_dex(apk_dir, "QUmkLrrISiud6RPU", "eh7aJlOdHCNsGNcD")
         # 添加壳app
         FilePlugin.copy_file("proxy_application.dex", f"{apk_dir}/classes.dex")
         ZipPlugin.make_zip_dir(apk_dir, apk_file_xed_name)
@@ -158,18 +158,10 @@ class JGApplication:
             if path.find(".dex") != -1:
                 aesPlugin.encrypt_byte_by_jar(path, path.replace(".dex", ".xed"))
         else:
-            # for root, dirs, files in os.walk(path):
-            #     for file in files:
-            #         file_path = os.path.join(root, file)  # 原来的文件路径
-            #         if file_path.find(".dex") != -1:
-            #             # bytes = FilePlugin.read_byte_from_file(file_path)
-            #             aesPlugin.encrypt_byte_by_jar(file_path, file_path.replace(".dex", ".xed"))
-            #             os.remove(file_path)
-            dex_zip = os.path.join(path, "class_dexs.zip")
-            has_dex = ZipPlugin.make_zip_dir(path, dex_zip, ".xed")
+            dex_zip = os.path.join(path, "classes.zip")
+            has_dex = ZipPlugin.make_zip_dir(path, dex_zip, ".dex")
             if has_dex:
                 aesPlugin.encrypt_byte_by_jar(dex_zip, dex_zip.replace(".zip", ".piz"))
-                # aesPlugin.decrypt_byte_by_java(dex_zip.replace(".zip", ".piz"), dex_zip.replace(".zip", "_decrypt.zip"))
                 os.remove(dex_zip)
 
     def safe_check(self, apk_file, signer_file):

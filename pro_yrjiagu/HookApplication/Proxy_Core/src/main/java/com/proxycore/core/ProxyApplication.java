@@ -49,69 +49,53 @@ public class ProxyApplication extends Application {
         File dexDir = new File(versionDir, "dexDir");
         List<File> dexFilesList = new ArrayList<>();
         if (!dexDir.exists() || dexDir.list().length == 0) {
-            Zip.unZip(apkFile, versionDir);
+            Zip.unZipFile(apkFile, versionDir, ".piz");
             File[] files = versionDir.listFiles();
-            if (files != null && files.length > 0) {
+            if (files != null && files.length > 0)
                 for (File file : files) {
                     String name = file.getName();
-                    //初版本dex转xed方式
-                    if (name.endsWith(".xed")) {
-                        try {
-                            byte[] bytes = Utils.getBytes(file);
-                            byte[] decrypt = EncryptUtils.getInstance().decrypt(bytes);
-                            if (!dexDir.exists()) {
-                                dexDir.mkdirs();
-                            }
-                            File fileDex = new File(dexDir, file.getName());
-                            FileOutputStream fos = new FileOutputStream(fileDex);
-                            fos.write(decrypt);
-                            fos.flush();
-                            fos.close();
-                            dexFilesList.add(fileDex);
-//                            SevenZUtils.unCompress(file, dexDir);
-                            //已经解密过了
-                            for (File dex : dexDir.listFiles()) {
-                                dexFilesList.add(dex);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-//                     //压缩体积所有dex文件压缩成piz形式
-//                     if (name.endsWith(".piz")) {
+//                     //旧版本dex文件加密方案
+//                     if (name.endsWith(".xed")) {
 //                         try {
 //                             byte[] bytes = Utils.getBytes(file);
 //                             byte[] decrypt = EncryptUtils.getInstance().decrypt(bytes);
 //                             if (!dexDir.exists()) {
 //                                 dexDir.mkdirs();
 //                             }
-//                             File zipFile = new File(dexDir, file.getName().replace(".piz",".zip"));
+//                             File fileDex = new File(dexDir, file.getName());
 //                             FileOutputStream fos = new FileOutputStream(fileDex);
 //                             fos.write(decrypt);
 //                             fos.flush();
 //                             fos.close();
-//                             Zip.unzip(zipFile, versionDir);
-//                             File[] files = versionDir.listFiles();
-//                             File[] files = versionDir.listFiles();
-//                             if (files != null && files.length > 0) {
-//                                 for (File file : files) {
-//                                     String name = file.getName();
-//                                     //初版本dex转xed方式
-//                                     if (name.endsWith(".xed")) {
-//                                     }
-//                                 }
+//                             dexFilesList.add(fileDex);
+//                             //已经解密过了
+//                             for (File dex : dexDir.listFiles()) {
+//                                 dexFilesList.add(dex);
 //                             }
 //                         } catch (Exception e) {
 //                             e.printStackTrace();
 //                         }
 //                     }
+                    //新版本dex文件打包zip之后再加密方案
+                    if (name.endsWith(".piz")) {
+                        try {
+                            byte[] bytes = Utils.getBytes(file);
+                            byte[] decrypt = EncryptUtils.getInstance().decrypt(bytes);
+                            File fileDexZip = new File(versionDir, file.getName().replace("piz", "zip"));
+                            FileOutputStream fos = new FileOutputStream(fileDexZip);
+                            fos.write(decrypt);
+                            fos.flush();
+                            fos.close();
+                            Zip.unZipFile(fileDexZip, dexDir, ".dex");
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-            }
-        } else {
-            //已经解密过了
-            for (File dex : dexDir.listFiles()) {
-                dexFilesList.add(dex);
-            }
+        }
+        //解密
+        for (File file : dexDir.listFiles()) {
+            dexFilesList.add(file);
         }
         try {
             loadDex(dexFilesList, versionDir);

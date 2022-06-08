@@ -1,3 +1,4 @@
+import binascii
 import os
 import time
 import zipfile
@@ -25,9 +26,11 @@ class ZipPlugin:
                 if file_filter_type is None:
                     has_dex_file = True
                     zip_file.write(filename, zip_file_name, compress_type=zipfile.ZIP_DEFLATED)
+                    os.remove(filename)
                 else:
                     if filename.find(file_filter_type) != -1:
                         zip_file.write(filename, zip_file_name, compress_type=zipfile.ZIP_DEFLATED)
+                        os.remove(filename)
                         has_dex_file = True
         zip_file.close()
         return has_dex_file
@@ -113,3 +116,7 @@ class ZipPlugin:
                 ZipPlugin.update_file_change_time(file)
             elif os.path.isdir(file):
                 ZipPlugin.update_file_dir_change_time(file)
+
+    @staticmethod
+    def crc32asii(file_bytes):
+        return '0x%8x' % (binascii.crc32(file_bytes) & 0xffffffff)
