@@ -1,5 +1,5 @@
 import os
-
+import constants
 from lxml import etree
 # 对apk进行自定义加固操作，添加代理app，加密*.dex后缀的文件
 from plugin.HookModulePlugin import HookModulePlugin
@@ -24,7 +24,7 @@ class JGApplication:
         if self.safe_check(apk_file_name, self.signer_file):
             return
         apk_dir = apk_file_name.replace(".apk", "")
-        apk_file_xed_name = apk_file_name.replace(".apk", "_xed.apk")
+        apk_file_xed_name = apk_file_name.replace(".apk", "_yrjiagu.apk")
         FilePlugin.remove_path_file(apk_dir)
         ZipPlugin.un_zip_file(apk_file_name, apk_dir)
         axml_file = f"{apk_dir}/AndroidManifest.xml"
@@ -62,14 +62,17 @@ class JGApplication:
         APKPlugin.change_jar_to_dex("proxy_aar_temp/classes.jar")
         # 壳加入源apk进行打包
         FilePlugin.move_file("proxy_aar_temp/classes.dex", f"{apk_dir}/classes.dex")
-        # FilePlugin.remove_path_file("proxy_aar_temp")
+        # 移除aar临时文件夹
+        FilePlugin.remove_path_file("proxy_aar_temp")
+        # 移除aar临时文件
         FilePlugin.remove_path_file(proxy_aar_file)
         # 重打包
         ZipPlugin.make_zip_dir(apk_dir, apk_file_xed_name)
         FilePlugin.remove_path_file(apk_dir)
         # 重新签名
-        APKPlugin.signer_apk_file(self.signer_file, self.signer_content, apk_file_xed_name,
-                                  apk_file_xed_name.replace("_xed.apk", "_signer.apk"))
+        jks = os.path.join(constants.path_yrjiagu, self.signer_file)
+        old_apk = os.path.join(constants.path_yrjiagu, apk_file_xed_name)
+        APKPlugin.signer_apk_file(jks, self.signer_content, old_apk)
         FilePlugin.remove_path_file(apk_file_xed_name)
 
     def create_jiagu_apk(self, apk_file_name):
@@ -82,7 +85,7 @@ class JGApplication:
         # apk源文件
         apk_dir = apk_file_name.replace(".apk", "")
         # apk修改 dex -> xed 文件
-        apk_file_xed_name = apk_file_name.replace(".apk", "_xed.apk")
+        apk_file_xed_name = apk_file_name.replace(".apk", "_yrjiagu.apk")
         FilePlugin.remove_path_file(apk_dir)
         # 解包源apk
         ZipPlugin.un_zip_file(apk_file_name, apk_dir)
@@ -109,8 +112,7 @@ class JGApplication:
         ZipPlugin.make_zip_dir(apk_dir, apk_file_xed_name)
         FilePlugin.remove_path_file(apk_dir)
         # 重新签名
-        APKPlugin.signer_apk_file(self.signer_file, self.signer_content, apk_file_xed_name,
-                                  apk_file_xed_name.replace("_xed.apk", "_signer.apk"))
+        APKPlugin.signer_apk_file(self.signer_file, self.signer_content, apk_file_xed_name)
         FilePlugin.remove_path_file(apk_file_xed_name)
 
     def __change_apk_manifest_txt(self, android_manifest_file, proxy_application_name=None, apk_package=None,

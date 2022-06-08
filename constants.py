@@ -2,6 +2,7 @@
 path_root = "/Users/sung/sung"
 # 本项目路径
 path_self = path_root + "/pycharm-projects/buildvestapk"
+path_yrjiagu = path_root + "/pycharm-projects/buildvestapk/pro_yrjiagu"
 # 新包配置文件路径
 path_ini = path_self + "/pro_assembleapk/ini"
 # 安卓项目根路径

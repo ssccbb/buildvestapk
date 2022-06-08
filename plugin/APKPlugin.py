@@ -1,4 +1,5 @@
 import os
+import shutil
 import xml.dom.minidom
 from binascii import a2b_hex
 from plugin.FilePlugin import FilePlugin
@@ -56,15 +57,16 @@ class APKPlugin:
         :return:
         """
         if signer_apk_file is None:
-            signer_apk_file = apk_file.replace(".apk", "_signer.apk")
+            signer_apk_file = apk_file.replace(".apk", "_sign.apk")
+        shutil.copyfile(apk_file, signer_apk_file)
         print("开始为apk签名...")
         path_apk_signer = os.path.join(constants.path_self, "jar/apksigner.jar")
-        cmd_signer = f'java -jar {path_apk_signer} sign  --ks {signer_file} {signer_content} --out {signer_apk_file} {apk_file}'
+        cmd_signer = f'java -jar {path_apk_signer} -keystore {signer_file} {signer_content} {signer_apk_file}'
         if os.system(cmd_signer) == 0:
             print("成功为apk签名")
+            os.remove("sign.db")
         else:
             raise Exception("apk签名失败")
-        os.remove(signer_apk_file + ".idsig")
 
     @staticmethod
     def change_dex_to_jar(dex_file, jar_file=None):
