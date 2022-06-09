@@ -8,6 +8,7 @@ from plugin.AESPlugin import AESPlugin
 from plugin.FilePlugin import FilePlugin
 from plugin.ZipPlugin import ZipPlugin
 from plugin.APKPlugin import APKPlugin
+from pro_yrjiagu.reediter import Reediter
 
 
 class JGApplication:
@@ -21,7 +22,7 @@ class JGApplication:
         创建加固apk文件，会自动根据apk本身的包名动态修改壳app的包名路径，还支持修改AES加密的key,iv
         :return:
         """
-        if self.safe_check(apk_file_name, self.signer_file):
+        if self.__safe_check(apk_file_name, self.signer_file):
             return
         apk_dir = apk_file_name.replace(".apk", "")
         apk_file_xed_name = apk_file_name.replace(".apk", "_yrjiagu.apk")
@@ -46,11 +47,13 @@ class JGApplication:
         FilePlugin.remove_path_file(axml_decode_file)
         # 加密dex文件，保证这里的key,iv和hookapplication//Proxy_Core模块代码里面的key,iv一致
         # 逐一加密
-        self.__encrypt_dex(apk_dir, "QUmkLrrISiud6RPU", "eh7aJlOdHCNsGNcD")
+        self.__encrypt_dex(apk_dir, constants.aes_key, constants.aes_iv)
         # 修改AndroidSDK路径
         FilePlugin.wirte_str_to_file('sdk.dir=' + android_sdk_path, "HookApplication/local.properties")
         # 修改壳的包名
         HookModulePlugin.change_core_app_package(HookModulePlugin.origin_name, package_middle)
+        # 修改壳的AES配置
+        Reediter.reedit_application_aes_ini(constants.aes_key, constants.aes_iv)
         # 开始编译aar
         HookModulePlugin.make_proxy_core_app(gradle_path=gradle_path)
         HookModulePlugin.change_core_app_package(package_middle, HookModulePlugin.origin_name)
@@ -80,7 +83,7 @@ class JGApplication:
         创建加固apk文件，代理app的包名路固定为com.proxycore.core.ProxyApplication
         :return:
         """
-        if self.safe_check(apk_file_name, self.signer_file):
+        if self.__safe_check(apk_file_name, self.signer_file):
             return
         # apk源文件
         apk_dir = apk_file_name.replace(".apk", "")
@@ -106,7 +109,7 @@ class JGApplication:
         APKPlugin.encode_amxl(axml_decode_file, axml_file)
         FilePlugin.remove_path_file(axml_decode_file)
         # 加密dex文件
-        self.__encrypt_dex(apk_dir, "QUmkLrrISiud6RPU", "eh7aJlOdHCNsGNcD")
+        self.__encrypt_dex(apk_dir, constants.aes_key, constants.aes_iv)
         # 添加壳app
         FilePlugin.copy_file("proxy_application.dex", f"{apk_dir}/classes.dex")
         ZipPlugin.make_zip_dir(apk_dir, apk_file_xed_name)
@@ -115,7 +118,8 @@ class JGApplication:
         APKPlugin.signer_apk_file(self.signer_file, self.signer_content, apk_file_xed_name)
         FilePlugin.remove_path_file(apk_file_xed_name)
 
-    def __change_apk_manifest_txt(self, android_manifest_file, proxy_application_name=None, apk_package=None,
+    @staticmethod
+    def __change_apk_manifest_txt(android_manifest_file, proxy_application_name=None, apk_package=None,
                                   app_version_name=None, output_file=None):
         """
         修改manifest.xml文件中的关键字段
@@ -147,7 +151,8 @@ class JGApplication:
         axml_byte_buffer = etree.tostring(ele_root, pretty_print=True, encoding="utf-8")
         FilePlugin.wirte_byte_to_file(axml_byte_buffer, output_file)
 
-    def __encrypt_dex(self, path, key, key_iv):
+    @staticmethod
+    def __encrypt_dex(path, key, key_iv):
         """
         加密dex文件为xed文件
         :param path:
@@ -155,18 +160,19 @@ class JGApplication:
         :param key_iv:
         :return:
         """
-        aesPlugin = AESPlugin(key, key_iv)
+        aes_plugin = AESPlugin(key, key_iv)
         if os.path.isfile(path):
             if path.find(".dex") != -1:
-                aesPlugin.encrypt_byte_by_jar(path, path.replace(".dex", ".xed"))
+                aes_plugin.encrypt_byte_by_jar(path, path.replace(".dex", ".xed"))
         else:
             dex_zip = os.path.join(path, "classes.zip")
             has_dex = ZipPlugin.make_zip_dir(path, dex_zip, ".dex")
             if has_dex:
-                aesPlugin.encrypt_byte_by_jar(dex_zip, dex_zip.replace(".zip", ".piz"))
+                aes_plugin.encrypt_byte_by_jar(dex_zip, dex_zip.replace(".zip", ".piz"))
                 os.remove(dex_zip)
 
-    def safe_check(self, apk_file, signer_file):
+    @staticmethod
+    def __safe_check(apk_file, signer_file):
         if not os.path.isfile(apk_file):
             print(f"没有在当前目录找到{apk_file}文件")
             return True

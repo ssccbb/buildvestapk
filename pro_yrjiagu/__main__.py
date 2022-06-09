@@ -3,11 +3,11 @@ import sys
 
 import constants
 import pro_yrjiagu.CacheUtil
-from pro_yrjiagu.JGApplication import JGApplication
+from pro_yrjiagu.process import JGApplication
 from plugin.SearchPlugin import FileFinder
 
 if __name__ == '__main__':
-    cache_util = pro_yrjiagu.CacheUtil.CacheUtil("jiagu_apk_info", "main_jiagu.ini")
+    cache_util = pro_yrjiagu.CacheUtil.CacheUtil("jiagu_apk_info", "jiagu.ini")
     path_project = os.path.join(constants.path_self, "pro_yrjiagu")
     find_apks = FileFinder.find_file_in_dir(path_project, "release.apk")
     find_jkss = FileFinder.find_file_in_dir(path_project, ".jks")

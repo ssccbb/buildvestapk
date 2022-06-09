@@ -31,3 +31,7 @@ old_app_wxapi_path = "com.syzdmsc.hjbm"
 
 # SDK路径
 path_android_sdk = "/Users/sung/sung/android-tools/sdk/android-sdk-macosx"
+
+# 加固相关
+aes_key = "QUmkLrrISiud6RPU"
+aes_iv = "eh7aJlOdHCNsGNcD"
