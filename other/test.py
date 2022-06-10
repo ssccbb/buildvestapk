@@ -19,7 +19,14 @@
 # name2 = "zhou1"
 # 多个%s在替换的时候需要后者以元组形式入参
 # print("%s%s" % (name, name2))
+# print("%s%d" % ("zhou", 111))
 
 # join方法前者会插分式的插入后者的每一个字符中间
 # print("hello".join("world"))
 # print(" ".join(("hello", "world", "!")))
+
+# 有色内容打印
+# print("\033[4;36;42m输出内容\033[0m")
+# 7反白状态下字体色会变成背景色
+# print("\033[2;31m输出内容\033[0m")
+print(("执行方法%s耗时 >>> %d ms" % (str("aaaaaa"), 4444)).join(("\033[7m", "\033[0m")))

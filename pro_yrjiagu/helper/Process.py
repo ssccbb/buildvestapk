@@ -1,4 +1,5 @@
 import os
+import time
 import constants
 from lxml import etree
 # 对apk进行自定义加固操作，添加代理app，加密*.dex后缀的文件
@@ -11,12 +12,31 @@ from plugin.APKPlugin import APKPlugin
 from pro_yrjiagu.helper.Reediter import Reediter
 
 
+def deco(func):
+    """
+    装饰器打印方法耗时
+    :param func: 执行的方法
+    :return:
+    """
+
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        print("开始执行方法 >>> " + str(func))
+        func(*args, **kwargs)
+        end_time = time.time()
+        msecs = (end_time - start_time) * 1000
+        print(("执行方法%s耗时 >>> %d ms" % (str(func), msecs)).join(("\033[7m", "\033[0m")))
+
+    return wrapper
+
+
 class JGApplication:
 
     def __init__(self, signer_file, signer_content, ):
         self.signer_file = signer_file
         self.signer_content = signer_content
 
+    @deco
     def create_jiagu_apk_by_hook_application(self, apk_file_name, android_sdk_path=None, gradle_path=None):
         """
         创建加固apk文件，会自动根据apk本身的包名动态修改壳app的包名路径，还支持修改AES加密的key,iv
@@ -58,7 +78,8 @@ class JGApplication:
         HookModulePlugin.make_proxy_core_app(gradle_path=gradle_path)
         HookModulePlugin.change_core_app_package(package_middle, HookModulePlugin.origin_name)
         # 移动aar
-        FilePlugin.move_file("../pro_yrjiagu/HookApplication/Proxy_Core/build/outputs/aar/Proxy_Core-release.aar", proxy_aar_file)
+        FilePlugin.move_file("../pro_yrjiagu/HookApplication/Proxy_Core/build/outputs/aar/Proxy_Core-release.aar",
+                             proxy_aar_file)
         # 解压aar拿到classes.jar文件
         ZipPlugin.un_zip_file(proxy_aar_file, "proxy_aar_temp")
         # 转dex文件
@@ -78,6 +99,7 @@ class JGApplication:
         APKPlugin.signer_apk_file(jks, self.signer_content, old_apk)
         FilePlugin.remove_path_file(apk_file_xed_name)
 
+    @deco
     def create_jiagu_apk(self, apk_file_name):
         """
         创建加固apk文件，代理app的包名路固定为com.proxycore.core.ProxyApplication
