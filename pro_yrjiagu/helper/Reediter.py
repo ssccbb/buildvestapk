@@ -16,9 +16,9 @@ class Reediter:
         :return:
         """
         path_core = os.path.join(constants.path_yrjiagu,
-                                 "../HookApplication/Proxy_Core/src/main/java/com/proxycore/core/EncryptUtils.java")
+                                 "../pro_yrjiagu/HookApplication/Proxy_Core/src/main/java/com/proxycore/core/EncryptUtils.java")
         path_tool = os.path.join(constants.path_yrjiagu,
-                                 "../HookApplication/Proxy_Tools/src/main/java/com/proxytools/tools/EncryptUtil.java")
+                                 "../pro_yrjiagu/HookApplication/Proxy_Tools/src/main/java/com/proxytools/tools/EncryptUtil.java")
         Reediter.reedit_file_aes_ini(aes_key, aes_iv, path_core)
         Reediter.reedit_file_aes_ini(aes_key, aes_iv, path_tool)
         pass

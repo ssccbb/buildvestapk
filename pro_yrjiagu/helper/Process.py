@@ -49,16 +49,16 @@ class JGApplication:
         # 逐一加密
         self.__encrypt_dex(apk_dir, constants.aes_key, constants.aes_iv)
         # 修改AndroidSDK路径
-        FilePlugin.wirte_str_to_file('sdk.dir=' + android_sdk_path, "../HookApplication/local.properties")
-        # 修改壳的包名
-        HookModulePlugin.change_core_app_package(HookModulePlugin.origin_name, package_middle)
+        FilePlugin.wirte_str_to_file('sdk.dir=' + android_sdk_path, "../pro_yrjiagu/HookApplication/local.properties")
         # 修改壳的AES配置
         Reediter.reedit_application_aes_ini(constants.aes_key, constants.aes_iv)
+        # 修改壳的包名
+        HookModulePlugin.change_core_app_package(HookModulePlugin.origin_name, package_middle)
         # 开始编译aar
         HookModulePlugin.make_proxy_core_app(gradle_path=gradle_path)
         HookModulePlugin.change_core_app_package(package_middle, HookModulePlugin.origin_name)
         # 移动aar
-        FilePlugin.move_file("HookApplication/Proxy_Core/build/outputs/aar/Proxy_Core-release.aar", proxy_aar_file)
+        FilePlugin.move_file("../pro_yrjiagu/HookApplication/Proxy_Core/build/outputs/aar/Proxy_Core-release.aar", proxy_aar_file)
         # 解压aar拿到classes.jar文件
         ZipPlugin.un_zip_file(proxy_aar_file, "proxy_aar_temp")
         # 转dex文件
