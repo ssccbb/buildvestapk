@@ -21,7 +21,7 @@ def deco(func):
 
     def wrapper(*args, **kwargs):
         start_time = time.time()
-        print("开始执行方法 >>> " + str(func))
+        print(("开始执行 >>> %s" % str(func)).join(("\033[7m", "\033[0m")))
         func(*args, **kwargs)
         end_time = time.time()
         msecs = (end_time - start_time) * 1000
