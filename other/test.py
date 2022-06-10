@@ -1,11 +1,4 @@
 # coding=utf-8
-import os
-import subprocess
-from plugin.FilePlugin import FilePlugin
-from plugin.SearchPlugin import FileFinder
-
-import constants
-from pro_yrjiagu.reediter import Reediter
 
 # os.chdir("/Users/sung/sung/flutter-project/huajian-android")
 # os.system("./gradle clean assembleRelease")
@@ -20,4 +13,13 @@ from pro_yrjiagu.reediter import Reediter
 # for file in FileFinder.find_file_in_dir(os.path.join(constants.path_self, 'pro_yrjiagu'), '.py'):
 #     print(str(file))
 
-Reediter.reedit_hook_application_aes_ini(constants.aes_key,constants.aes_iv)
+# Reediter.reedit_hook_application_aes_ini(constants.aes_key,constants.aes_iv)
+
+# name = "zhou"
+# name2 = "zhou1"
+# 多个%s在替换的时候需要后者以元组形式入参
+# print("%s%s" % (name, name2))
+
+# join方法前者会插分式的插入后者的每一个字符中间
+# print("hello".join("world"))
+# print(" ".join(("hello", "world", "!")))

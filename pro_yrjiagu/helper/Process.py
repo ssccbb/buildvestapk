@@ -8,7 +8,7 @@ from plugin.AESPlugin import AESPlugin
 from plugin.FilePlugin import FilePlugin
 from plugin.ZipPlugin import ZipPlugin
 from plugin.APKPlugin import APKPlugin
-from pro_yrjiagu.reediter import Reediter
+from pro_yrjiagu.helper.Reediter import Reediter
 
 
 class JGApplication:
@@ -49,7 +49,7 @@ class JGApplication:
         # 逐一加密
         self.__encrypt_dex(apk_dir, constants.aes_key, constants.aes_iv)
         # 修改AndroidSDK路径
-        FilePlugin.wirte_str_to_file('sdk.dir=' + android_sdk_path, "HookApplication/local.properties")
+        FilePlugin.wirte_str_to_file('sdk.dir=' + android_sdk_path, "../HookApplication/local.properties")
         # 修改壳的包名
         HookModulePlugin.change_core_app_package(HookModulePlugin.origin_name, package_middle)
         # 修改壳的AES配置
