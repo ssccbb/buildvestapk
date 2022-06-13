@@ -1,11 +1,30 @@
 import os
 import re
 import sys
+import time
 
 import constants
 from plugin.APKPlugin import APKPlugin
 from plugin.FilePlugin import FilePlugin
 from plugin.SearchPlugin import FileFinder
+
+
+def deco(func):
+    """
+    装饰器打印方法耗时
+    :param func: 执行的方法
+    :return:
+    """
+
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        print(("开始执行 >>> %s" % str(func)).join(("\033[7m", "\033[0m")))
+        func(*args, **kwargs)
+        end_time = time.time()
+        msecs = (end_time - start_time) * 1000
+        print(("执行方法%s耗时 >>> %d ms" % (str(func), msecs)).join(("\033[7m", "\033[0m")))
+
+    return wrapper
 
 
 class Process:
@@ -30,6 +49,7 @@ class Process:
         FilePlugin.wirte_str_to_file(vest_config_content, self.vest_config.replace(".txt", "_zh.txt"))
         return new_vest_config
 
+    @deco
     def decode_apk_by_apktool(self):
         """
         使用apktool解包apk
@@ -57,6 +77,7 @@ class Process:
         else:
             raise Exception("apktool解包失败")
 
+    @deco
     def build_apk_by_apktool(self):
         """
         使用apktool打包新apk
@@ -110,15 +131,17 @@ class Process:
         FilePlugin.remove_path_file(rebuild_apk)
         print(f"重命名至 >>> {new_apk} 成功!")
 
+    @deco
     def sign_apk_files(self, root_path):
         apk_files = FileFinder.find_file_in_cdir(root_path, ".apk")
         jks_file = root_path.replace("base", constants.old_app_jks)
         jks_pass = "LS880617\!@#"
         sign_content = f'-alias yr -pswd {jks_pass} -aliaspswd {jks_pass}'
         for apk_file in apk_files:
-            print(f'查询到需要签名的APK >>> {apk_file}')
-            APKPlugin.signer_apk_file(jks_file, sign_content, apk_file)
-            FilePlugin.remove_path_file(apk_file)
+            apk = os.path.join(root_path, apk_file)
+            print(f'查询到需要签名的APK >>> {apk}')
+            APKPlugin.signer_apk_file(jks_file, sign_content, apk)
+            FilePlugin.remove_path_file(apk)
 
     def clear_temp(self):
         FilePlugin.remove_path_file(self.apk_temp)

@@ -1,9 +1,29 @@
 import os
+import time
 
 import constants
 from pro_vestapk.helper.Process import Process
 
 
+def deco(func):
+    """
+    装饰器打印方法耗时
+    :param func: 执行的方法
+    :return:
+    """
+
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        print(("开始执行 >>> %s" % str(func)).join(("\033[7m", "\033[0m")))
+        func(*args, **kwargs)
+        end_time = time.time()
+        msecs = (end_time - start_time) * 1000
+        print(("执行方法%s耗时 >>> %d ms" % (str(func), msecs)).join(("\033[7m", "\033[0m")))
+
+    return wrapper
+
+
+@deco
 def creat_vest_apk():
     root = os.path.join(constants.path_self, "pro_vestapk")
     base = os.path.join(root, "base")
