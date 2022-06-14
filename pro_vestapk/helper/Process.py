@@ -124,8 +124,8 @@ class Process:
         if not os.path.exists(root_path):
             raise FileExistsError(f"文件夹 >>> {root_path} 不存在")
         vest_apk_name = vest_apk_name.replace("汉", "A")
-        vest_apk_name = vest_apk_name.replace("H", "b")
-        vest_apk_name = vest_apk_name.replace("1", "c")
+        vest_apk_name = vest_apk_name.replace("H", "B")
+        vest_apk_name = vest_apk_name.replace("1", "C")
         new_apk = os.path.join(root_path, vest_apk_name + ".apk")
         FilePlugin.copy_file(rebuild_apk, new_apk)
         FilePlugin.remove_path_file(rebuild_apk)
