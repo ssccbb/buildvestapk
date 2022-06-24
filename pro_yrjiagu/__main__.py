@@ -15,7 +15,7 @@ if __name__ == '__main__':
         print("请确认路径内仅有一个jks文件！")
         sys.exit(0)
     if len(find_apks) != 1:
-        print("请确认路径内仅有一个apk文件！")
+        print("请确认路径内仅有一个apk文件(命名格式xx_realease.apk)！")
         sys.exit(0)
     apk_file_name = find_apks[0]
     signature_file = find_jkss[0]
