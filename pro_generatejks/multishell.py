@@ -9,7 +9,6 @@ else:
     utils.mkdirs()
 # 创建需要的保存jks信息的txt
 utils.creat_jksinfos()
-
 for _dir in os.listdir(utils._jks_file_):
     _file_path = utils._jks_file_ + "/" + _dir + "/" + config.__keystore
     _shell_genkey = "keytool -genkey -v -keystore " + _file_path \
@@ -18,7 +17,7 @@ for _dir in os.listdir(utils._jks_file_):
                     + " -keysize " + str(config.__keysize) + " -validity " + str(config.__validity)
     print("ready to execute cdmstr : " + _shell_genkey)
     # 交互输入开始
-    child = pexpect.spawn(_shell_genkey)
+    child = pexpect.spawn(_shell_genkey, encoding="UTF-8")
     child.expect("您的名字与姓氏是什么")
     if config.__random_package:
         child.sendline(_dir)
@@ -43,7 +42,7 @@ for _dir in os.listdir(utils._jks_file_):
     print("move to pkcs12")
     # 迁移行业标准pkcs12
     _shell_pkcs12 = "keytool -importkeystore -srckeystore " + _file_path + " -destkeystore " + _file_path + " -deststoretype pkcs12"
-    pkcs12 = pexpect.spawn(_shell_pkcs12)
+    pkcs12 = pexpect.spawn(_shell_pkcs12, encoding="UTF-8")
     pkcs12.expect("输入源密钥库口令")
     pkcs12.sendline(config.__keypass)
     # 休眠等待文件生成
@@ -66,7 +65,7 @@ for _dir in os.listdir(utils._jks_file_):
     # jksinfo文件路径
     _jks_info_dir = _jks_dir + "/" + utils._jks_info_
     _shell_list = "keytool -v -list -keystore " + _jks_file
-    list = pexpect.spawn(_shell_list)
+    list = pexpect.spawn(_shell_list, encoding="UTF-8")
     list.expect("密钥库口令")
     list.sendline(config.__keypass)
     utils.writeJKSInfo(list.read(), _jks_info_dir)
