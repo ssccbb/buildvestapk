@@ -4,7 +4,7 @@ import os
 print("-----------------------------")
 
 # 需要的jks数量
-__jks_number = 10
+__jks_number = 20
 # 是否需要生成jksinfo.txt保存md5等相关信息
 __jks_info = True
 # 是否需要自动随机生成包名

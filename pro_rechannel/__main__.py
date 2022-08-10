@@ -51,6 +51,9 @@ if __name__ == '__main__':
     channel_file_dir = os.path.join(apk_dir, "META-INF")
     # 改渠道之后的文件夹
     channel_apks_dir = os.path.join(path_project, "apks")
+    if os.path.exists(channel_apks_dir):
+        FilePlugin.remove_path_file(channel_apks_dir)
+    FilePlugin.mkdir(channel_apks_dir)
     # 解压
     FilePlugin.remove_path_file(apk_dir)
     ZipPlugin.un_zip_file(apk_file_name, apk_dir)
