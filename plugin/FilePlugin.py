@@ -385,3 +385,41 @@ class FilePlugin:
                 else:
                     return
         pass
+
+    @staticmethod
+    def reset_files_md5(dirs):
+        pass
+
+    @staticmethod
+    def reset_file_md5(file):
+        """
+        重置文件的md5（仅处理图片以及文档类文件）
+        :param file: 文件，指定类型范围
+        :return:
+        """
+        if not file.endswith(".java") \
+                and not file.endswith(".pro") \
+                and not file.endswith(".xml") \
+                and not file.endswith(".properties") \
+                and not file.endswith(".txt") \
+                and not file.endswith(".ini") \
+                and not file.endswith(".kt") \
+                and not file.endswith(".cpp") \
+                and not file.endswith(".gradle") \
+                and not file.endswith(".png") \
+                and not file.endswith(".jpg") \
+                and not file.endswith(".jpeg"):
+            chars = file.splt(".")
+            print("不支持的文件类型 >>> " + chars[len(chars)-1])
+            return
+        pass
+
+    @staticmethod
+    def append_content_into_file(append_content, file_path):
+        """
+        往指定文件内添加内容
+        :param append_content: 待添加的内容
+        :param file_path: 文件路径
+        :return:
+        """
+        pass
