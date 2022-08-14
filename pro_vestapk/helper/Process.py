@@ -146,3 +146,7 @@ class Process:
     def clear_temp(self):
         FilePlugin.remove_path_file(self.apk_temp)
         FilePlugin.remove_path_file(os.path.join(constants.path_self, "pro_vestapk/vest_config_zh.txt"))
+
+    @deco
+    def change_md5(self, path):
+        FilePlugin.reset_files_md5(path)

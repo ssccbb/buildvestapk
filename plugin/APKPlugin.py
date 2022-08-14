@@ -20,7 +20,7 @@ class APKPlugin:
             output_dir = apk_file_name.replace(".apk", "")
         if not os.path.exists(output_dir):
             print("开始反编译原apk...")
-            path_apk_tool = os.path.join(constants.path_self, "jar/apk_tool.jar")
+            path_apk_tool = os.path.join(constants.path_self, "jar/apktool.jar")
             cmd = f'java -jar {path_apk_tool} d {apk_file_name} -o {output_dir}'
             if os.system(cmd) == 0:
                 print("成功反编译原apk")
@@ -39,7 +39,7 @@ class APKPlugin:
         if apk_file is None:
             apk_file = apk_file_dir + ".apk"
         print("开始打包新的apk...")
-        path_apk_tool = os.path.join(constants.path_self, "jar/apk_tool.jar")
+        path_apk_tool = os.path.join(constants.path_self, "jar/apktool.jar")
         cmd_zip = f'java -jar {path_apk_tool} b {apk_file_dir} -o {apk_file}'
         if os.system(cmd_zip) == 0:
             print("成功打包新的apk")

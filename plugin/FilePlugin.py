@@ -387,7 +387,16 @@ class FilePlugin:
         pass
 
     @staticmethod
-    def reset_files_md5(dirs):
+    def reset_files_md5(path):
+        if not os.path.exists(path):
+            return False
+        if os.path.isdir(path):
+            print(f'开始重置文件夹下各文件的md5 >> {path}')
+            for root, dirs, files in os.walk(path):
+                for file in files:
+                    FilePlugin.reset_file_md5(os.path.join(path, file))
+                for subdir in dirs:
+                    FilePlugin.reset_files_md5(os.path.join(path, subdir))
         pass
 
     @staticmethod
@@ -397,21 +406,16 @@ class FilePlugin:
         :param file: 文件，指定类型范围
         :return:
         """
-        if not file.endswith(".java") \
-                and not file.endswith(".pro") \
-                and not file.endswith(".xml") \
-                and not file.endswith(".properties") \
-                and not file.endswith(".txt") \
-                and not file.endswith(".ini") \
-                and not file.endswith(".kt") \
-                and not file.endswith(".cpp") \
-                and not file.endswith(".gradle") \
-                and not file.endswith(".png") \
-                and not file.endswith(".jpg") \
-                and not file.endswith(".jpeg"):
-            chars = file.splt(".")
-            print("不支持的文件类型 >>> " + chars[len(chars)-1])
+        if not os.path.exists(file):
             return
+        if not FilePlugin.is_text_file(file) and not FilePlugin.is_pic_file(file):
+            chars = file.split(".")
+            print("不支持的文件类型 >>> " + chars[len(chars) - 1])
+            return
+        print(f'{file}')
+        print(f'原文件md5 >> {FilePlugin.md5(file)}')
+        FilePlugin.append_content_into_file("\n", file)
+        print(f'修改后文件md5 >> {FilePlugin.md5(file)}')
         pass
 
     @staticmethod
@@ -422,4 +426,40 @@ class FilePlugin:
         :param file_path: 文件路径
         :return:
         """
+        newfile = open(file_path, 'a', encoding='utf-8')
+        newfile.write(append_content)
+        newfile.close()
+        print(f'{file_path} >> has changed')
         pass
+
+    @staticmethod
+    def is_text_file(file):
+        """
+        是可编辑的文本文件
+        :param file:
+        :return:
+        """
+        if file.endswith(".java") \
+                or file.endswith(".pro") \
+                or file.endswith(".xml") \
+                or file.endswith(".properties") \
+                or file.endswith(".txt") \
+                or file.endswith(".ini") \
+                or file.endswith(".kt") \
+                or file.endswith(".cpp") \
+                or file.endswith(".gradle"):
+            return True
+        return False
+
+    @staticmethod
+    def is_pic_file(file):
+        """
+        是图片文件
+        :param file:
+        :return:
+        """
+        if file.endswith(".png") \
+                or file.endswith(".jpg") \
+                or file.endswith(".jpeg"):
+            return True
+        return False
