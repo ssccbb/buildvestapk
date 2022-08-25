@@ -74,23 +74,30 @@ if __name__ == '__main__':
     with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
         listener.join()
 
-    if not PackageHelper.check_file_change_status(ini_package_name):
+    package_helper = PackageHelper()
+    if not package_helper.check_file_change_status(ini_package_name):
         # step 1 ：替换应用名
-        PackageHelper.change_app_name(app_name)
+        package_helper.change_app_name(app_name)
         # step 2 ：替换应用图标
-        PackageHelper.change_app_icon(constants.path_ini + "/" + constants.old_app_icon)
+        package_helper.change_app_icon(constants.path_ini + "/" + constants.old_app_icon)
         # step 3 ：替换应用签名文件
-        PackageHelper.change_app_jks(constants.path_ini + "/" + package_name + "/" + constants.old_app_jks)
+        package_helper.change_app_jks(constants.path_ini + "/" + package_name + "/" + constants.old_app_jks)
         # step 4 ：更改应用包名以及wxapi回调路径包名
-        PackageHelper.change_app_package(package_name)
+        package_helper.change_app_package(package_name)
         # step 5 ：更改其他配置相关
-        PackageHelper.change_app_ini(json_parser)
-    # step 6 : gradle
+        package_helper.change_app_ini(json_parser)
+    # step 6 : 修改图片以及文本文件md5
+    package_helper.change_md5(constants.path_android)
+    # step 7 : 修改代码文件(除wxapi)所在包名路径
+    package_helper.change_random_package()
+    # step 8 : 加密字符串
+    package_helper.encode_app_string()
+    # step 9 : gradle
     print("开始执行gradle打包...")
     os.chdir(constants.path_android)
     # os.system("./gradlew aDR --offline")
     os.system("./gradlew assembleRelease")
-    # step 7 : 拷贝文件
+    # step 10 : 拷贝文件
     apk_dir = os.path.join(constants.path_android, "app/build/outputs/apk/standard/release")
     for sub_file in os.listdir(apk_dir):
         if sub_file.endswith(".apk"):

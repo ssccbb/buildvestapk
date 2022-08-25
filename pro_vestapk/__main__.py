@@ -51,8 +51,18 @@ def creat_vest_apk():
     process.clear_temp()
 
 
+@deco
+def creat_new_apk():
+    root = os.path.join(constants.path_self, "pro_vestapk")
+    process = Process(os.path.join(root, "vest_config.txt"))
+    apk_temp = process.decode_apk_by_apktool()
+    process.change_md5("zmpceduser_v14.3.10_2022-08-14_release")
+    process.build_apk_by_apktool()
+
+
 if __name__ == '__main__':
     print("1、请确保配置了vest_config.txt文件（AABBCC格式）")
     print("2、请确保base文件夹为空")
     print("3、请确保根目录有且仅有一个apk文件以及jks文件")
     creat_vest_apk()
+    # creat_new_apk()

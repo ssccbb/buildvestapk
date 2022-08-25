@@ -388,6 +388,11 @@ class FilePlugin:
 
     @staticmethod
     def reset_files_md5(path):
+        """
+        重置文件的md5（仅处理图片以及文档类文件）
+        :param path: 根目录
+        :return:
+        """
         if not os.path.exists(path):
             return False
         if os.path.isdir(path):
