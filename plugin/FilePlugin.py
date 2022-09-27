@@ -206,7 +206,7 @@ class FilePlugin:
         :param new_path:
         :return:
         """
-        print("执行路径重命名 " + old_path + " >>> (new)" + new_path)
+        # print("执行路径重命名 " + old_path + " >>> (new)" + new_path)
         old_path_temp = old_path.split("/")
         new_path_temp = new_path.split("/")
         if len(old_path_temp) is not len(new_path_temp):
@@ -219,12 +219,12 @@ class FilePlugin:
         for root, dirs, files in os.walk(old_path):
             for file in files:
                 shutil.move(old_path + "/" + file, new_path + "/" + file)
-                print("重命名执行成功")
+                # print("重命名执行成功")
             for subdir in dirs:
                 shutil.move(old_path + "/" + subdir, new_path + "/" + subdir)
-                print("重命名执行成功")
+                # print("重命名执行成功")
         FilePlugin.remove_path(old_path)
-        print("旧路径移除 " + old_path)
+        # print("旧路径移除 " + old_path)
         pass
 
     @staticmethod
@@ -254,7 +254,7 @@ class FilePlugin:
         """
         if len(old_str) == 0 or len(new_str) == 0:
             return
-        print("执行字符串替换 " + old_str + " >>> (new)" + new_str + "  in  (file)" + target_file)
+        # print("执行字符串替换 " + old_str + " >>> (new)" + new_str + "  in  (file)" + target_file)
         with open(target_file, mode='r') as f:
             read_lines = f.readlines()
             f.close()
@@ -263,7 +263,7 @@ class FilePlugin:
                 if old_str in line:
                     line_new = line.replace(old_str, new_str)
                     f.writelines(line_new)
-                    print("替换成功！")
+                    # print("替换成功！")
                 else:
                     f.writelines(line)
             f.close()
@@ -300,7 +300,7 @@ class FilePlugin:
         isExists = os.path.exists(path)
         if not isExists:
             os.makedirs(path)
-            print(path + ' 创建成功')
+            # print(path + ' 创建成功')
             return True
         else:
             print(path + ' 目录已存在')
@@ -369,7 +369,6 @@ class FilePlugin:
 
     @staticmethod
     def remove_path(path):
-        print(path)
         if not os.path.exists(path):
             return
         dirs = path.split("/")
@@ -378,7 +377,6 @@ class FilePlugin:
         for pos in range(len(dirs) - 1, -1, -1):
             position = len(path) - len(dirs[pos]) - 1
             path = path[0:position]
-            print(path)
             if len(path) != 0 and os.path.exists(path):
                 if os.path.isdir(path) and not os.listdir(path):
                     os.rmdir(path)
@@ -468,3 +466,16 @@ class FilePlugin:
                 or file.endswith(".jpeg"):
             return True
         return False
+
+    @staticmethod
+    def count_dir(path):
+        """
+        计算该路径下文件夹数量
+        :param path: 根目录
+        :return:
+        """
+        count = 0
+        for root, dirs, files in os.walk(path):
+            for subdir in dirs:
+                count += 1
+        return count

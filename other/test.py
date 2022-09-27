@@ -1,5 +1,6 @@
 # coding=utf-8
-
+import constants
+from plugin.FilePlugin import *
 # os.chdir("/Users/sung/sung/flutter-project/huajian-android")
 # os.system("./gradle clean assembleRelease")
 
@@ -30,3 +31,29 @@
 # 7反白状态下字体色会变成背景色
 # print("\033[2;31m输出内容\033[0m")
 # print(("执行方法%s耗时 >>> %d ms" % (str("aaaaaa"), 4444)).join(("\033[7m", "\033[0m")))
+
+# text = """
+# public interface OnAnimListener
+#     {
+#         void onAnimStart();
+#
+#         void onAnimFinish();
+#     }
+# """
+# f = text.replace("OnAnimListener\n", "OnAnimListener")
+# print(f'{f}')
+
+
+# from plugin.DictPlugin import *
+# print(f'{DictPlugin.random_string_full(16)}')
+
+
+
+
+# from pro_vestvirus.encrypt.AesEncry import *
+#
+# domain = 'YapKaL1F5z5itlUYJJ7dGQ=='
+# aes = AESCipher('KluXvp7UC0VnePtH')
+# print(aes.encrypt('aaaaaaaaaaaaa'))
+# print(aes.decrypt(domain))
+

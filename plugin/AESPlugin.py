@@ -1,7 +1,8 @@
+import base64
 import os, constants
 from random import Random
 
-from cryptography.hazmat.primitives.ciphers.algorithms import AES
+from Cryptodome.Cipher import AES
 
 
 class AESPlugin:
@@ -30,6 +31,20 @@ class AESPlugin:
         cipher = AES.new(password, AES.MODE_CBC, iv)
         data = unpad(cipher.decrypt(data[bs:]))
         return (data)
+
+    def encrypt_str_base64(self, data):
+        aes = AES.new(key=self.add_to_16(self.key), mode=AES.MODE_CBC, iv=self.iv.encode())
+        encryptedstr = aes.encrypt(self.add_to_16(data))  # 加密后得到的字节数据
+        en_str = base64.b64encode(encryptedstr)  # 以base64编码方式解码, 得到加密字符串!
+        return str(en_str,encoding='utf-8')  # 把加密后的字节数据返回
+
+    def decrypt_str_base64(self, data):
+        # 解密时必须重新构建aes对象
+        aes = AES.new(key=self.add_to_16(self.key), mode=AES.MODE_CBC, iv=self.iv.encode())
+        # 先把密文转换成字节型, 再解密, 最后把之前填充的'\x00' 去掉
+        decryptedstr = aes.decrypt(base64.decodebytes(data.encode()))
+        return str(decryptedstr, encoding='utf-8').strip('\x00')
+
 
     # 待加密文本补齐到 block size 的整数倍
     def padding(self, bytes):
@@ -76,3 +91,8 @@ class AESPlugin:
             print("文件解密成功")
         else:
             raise Exception("文件解密失败")
+
+    def add_to_16(self, value):
+        while len(value.encode('utf-8')) % 16 != 0:
+            value += '\x00'  # 补全, 明文和key都必须是16的倍数
+        return value.encode('utf-8')

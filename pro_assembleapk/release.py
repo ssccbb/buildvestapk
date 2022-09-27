@@ -70,11 +70,11 @@ if __name__ == '__main__':
     print(" ------- 隐藏权限弹窗说明：" + str(hide_permission_dialog))
     print(" ------- 隐藏部分充值弹窗：" + str(hide_dialog))
 
-    print("按任意键继续 ....")
-    with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-        listener.join()
+    # print("按任意键继续 ....")
+    # with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    #     listener.join()
 
-    package_helper = PackageHelper()
+    package_helper = PackageHelper(os.path.join(constants.path_root, "flutter-project/huajian-android"))
     if not package_helper.check_file_change_status(ini_package_name):
         # step 1 ：替换应用名
         package_helper.change_app_name(app_name)
@@ -87,21 +87,21 @@ if __name__ == '__main__':
         # step 5 ：更改其他配置相关
         package_helper.change_app_ini(json_parser)
     # step 6 : 修改图片以及文本文件md5
-    package_helper.change_md5(constants.path_android)
+    # package_helper.change_md5(package_helper.path_android)
     # step 7 : 修改代码文件(除wxapi)所在包名路径
     package_helper.change_random_package()
     # step 8 : 加密字符串
     package_helper.encode_app_string()
     # step 9 : gradle
     print("开始执行gradle打包...")
-    os.chdir(constants.path_android)
-    # os.system("./gradlew aDR --offline")
-    os.system("./gradlew assembleRelease")
-    # step 10 : 拷贝文件
-    apk_dir = os.path.join(constants.path_android, "app/build/outputs/apk/standard/release")
-    for sub_file in os.listdir(apk_dir):
-        if sub_file.endswith(".apk"):
-            tar_dir = os.path.join(constants.path_self, "pro_assembleapk/output")
-            FilePlugin.move_file(os.path.join(apk_dir, sub_file), tar_dir)
-            print("apk文件已经转移至文件夹 >>> " + tar_dir)
+    # os.chdir(package_helper.path_android)
+    # # os.system("./gradlew aDR --offline")
+    # os.system("./gradlew assembleRelease")
+    # # step 10 : 拷贝文件
+    # apk_dir = os.path.join(package_helper.path_android, "app/build/outputs/apk/standard/release")
+    # for sub_file in os.listdir(apk_dir):
+    #     if sub_file.endswith(".apk"):
+    #         tar_dir = os.path.join(constants.path_self, "pro_assembleapk/output")
+    #         FilePlugin.move_file(os.path.join(apk_dir, sub_file), tar_dir)
+    #         print("apk文件已经转移至文件夹 >>> " + tar_dir)
     print("done!")

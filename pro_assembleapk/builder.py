@@ -25,13 +25,27 @@ def deco(func):
 
 
 class PackageHelper:
-    def __init__(self):
+    def __init__(self, path: str):
         print("inti package helper")
+        # 安卓项目根路径
+        self.path_android = path
+        # 安卓项目代码路径
+        self.path_android_code = self.path_android + "/app/src/main/java"
+        # 安卓项目res路径
+        self.path_android_res = self.path_android + "/app/src/main/res"
+        # 安卓项目包路径
+        self.path_android_package = self.path_android + "/app/src/main/java/com/syzdmsc/hjbm"
+        # gradle.properties配置参数文件路径
+        self.path_android_properties = self.path_android + "/gradle.properties"
+        # 字符串文件路径
+        self.path_android_string = self.path_android_res + "/values/strings.xml"
+        # file_paths
+        self.path_android_filepath = self.path_android_res + "/xml/file_paths.xml"
 
     @deco
     def check_file_change_status(self, package_name):
         dirs = package_name.split(".")
-        path = constants.path_android_code
+        path = self.path_android_code
         for subdir in dirs:
             if len(subdir.strip()) != 0:
                 path = os.path.join(path, subdir)
@@ -67,7 +81,8 @@ class PackageHelper:
         """
         print("开始替换appname ------ " + app_name)
         # path_android_string
-        FilePlugin.change_str_in_file("vestname", app_name, constants.path_android_string)
+        FilePlugin.change_str_in_file("vestname", app_name, self.path_android_string)
+        FilePlugin.change_str_in_file("vestname", app_name, self.path_android_properties)
         pass
 
     def change_app_icon(self, path_file):
@@ -77,7 +92,7 @@ class PackageHelper:
         :return:
         """
         print("开始替换appicon ------ " + path_file)
-        old_app_icon = constants.path_android_res + "/mipmap-xxhdpi/" + constants.old_app_icon
+        old_app_icon = self.path_android_res + "/mipmap-xxhdpi/" + constants.old_app_icon
         print("md5 >>> " + FilePlugin.md5(old_app_icon))
         FilePlugin.replace_file(old_app_icon, path_file)
         print("md5(new) >>> " + FilePlugin.md5(old_app_icon))
@@ -91,7 +106,7 @@ class PackageHelper:
         :return:
         """
         print("开始替换签名文件 ------ " + path_file)
-        old_app_jks = constants.path_android + "/" + constants.old_app_jks
+        old_app_jks = self.path_android + "/" + constants.old_app_jks
         print("md5 >>> " + FilePlugin.md5(old_app_jks))
         FilePlugin.replace_file(old_app_jks, path_file)
         print("md5(new) >>> " + FilePlugin.md5(old_app_jks))
@@ -107,13 +122,13 @@ class PackageHelper:
         """
         print("开始修改包名路径 ------ " + app_package_name)
         # properties
-        self.replace_content("APP_PACKAGENAME=", app_package_name.strip(), constants.path_android_properties)
+        self.replace_content("APP_PACKAGENAME=", app_package_name.strip(), self.path_android_properties)
         # wxapi回调包名
         app_package_name_list = app_package_name.split(".")
-        new_path = constants.path_android_code
+        new_path = self.path_android_code
         for dirname in app_package_name_list:
             new_path = new_path + "/" + dirname
-        FilePlugin.rename_path(constants.path_android_package, new_path)
+        FilePlugin.rename_path(self.path_android_package, new_path)
         # com/syzdmsc/hjbm
         for root, dirs, files in os.walk(new_path):
             for subdir in dirs:
@@ -134,7 +149,7 @@ class PackageHelper:
                                 f.write(content)
                                 f.close()
         # file_path.xml
-        FilePlugin.change_str_in_file(constants.old_app_package, app_package_name, constants.path_android_filepath)
+        FilePlugin.change_str_in_file(constants.old_app_package, app_package_name, self.path_android_filepath)
         pass
 
     @deco
@@ -152,7 +167,7 @@ class PackageHelper:
         :return:
         """
         print("开始修改其他配置参数 ------ " + str(ini_dict))
-        properties_file = constants.path_android_properties
+        properties_file = self.path_android_properties
         self.replace_content("APP_PACKAGENAME=", ini_dict.read_value_with_key("packageName").strip(),
                              properties_file)
         # self.replace_content("APP_VERSION=", ini_dict.read_value_with_key("versionName").strip(),
@@ -167,8 +182,8 @@ class PackageHelper:
         wechat_ini = ini_dict.read_value_with_key("wechatKey")
         self.replace_content("WECHAT_APPID=", wechat_ini[0].strip(), properties_file)
         self.replace_content("WECHAT_KEY=", wechat_ini[1].strip(), properties_file)
-        self.replace_content("KEY_OPENINSTALL=", ini_dict.read_value_with_key("openinstallKey"),
-                             properties_file)
+        # self.replace_content("KEY_OPENINSTALL=", ini_dict.read_value_with_key("openinstallKey"),
+        #                      properties_file)
         self.replace_content("HIDE_SLOGAN=", str(ini_dict.read_value_with_key("hideSlogan")).lower(),
                              properties_file)
         self.replace_content("HIDE_ONEYUANDIALOG=", str(ini_dict.read_value_with_key("hideOneYuan")).lower(),
@@ -189,8 +204,8 @@ class PackageHelper:
         self.replace_content("HIDE_DIALOG=", str(ini_dict.read_value_with_key("hideDialog")).lower(),
                              properties_file)
         FilePlugin.change_str_in_file("./" + constants.old_app_jks,
-                                      os.path.join(constants.path_android, constants.old_app_jks),
-                                      os.path.join(constants.path_android, "app/build.gradle"))
+                                      os.path.join(self.path_android, constants.old_app_jks),
+                                      os.path.join(self.path_android, "app/build.gradle"))
         print(str(properties_file) + " 配置替换完成！")
         pass
 
