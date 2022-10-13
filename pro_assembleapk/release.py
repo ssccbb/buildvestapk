@@ -8,18 +8,74 @@ import constants
 from pro_assembleapk.builder import PackageHelper
 from plugin.FilePlugin import FilePlugin
 from plugin.PackagePlugin import PackageParser
+from pro_assembleapk.Git import *
+from pro_vestvirus.Process import Process
+
+"""
+渠道、版本、openinstall 
+是默认不写进打包配置的所以在package.json内可不做修改
+"""
+# 是否需要在打包时加入报毒混淆
+need_regular = True
+# 需要生成的包名列表
+package_list = ['com.hnwqjui.romkdzpe', 'com.bqhflu.vgjyat']
 
 
-def on_release(key):
-    if key == Key.space:
-        return False
-
-
-def on_press(key):
+def assemble_list_():
+    """
+    批量生成apk
+    :return:
+    """
+    for package in package_list:
+        # 清空ini文件夹
+        print(f'清空配置文件夹 >>>>')
+        for sub in os.listdir(constants.path_ini):
+            FilePlugin.remove_path_file(os.path.join(constants.path_ini, sub))
+        # 开始单个打包
+        print(f'开始单个打包=====包名{package}=====第{package_list.index(package) + 1}个包')
+        back_path = os.path.join(constants.path_self, f'pro_assembleapk/backup/{package}')
+        if not os.path.exists(back_path):
+            print(
+                f'包名配置备份文件不存在 >>>> {back_path}\n===========================\n包名{package}因配置无效被跳过！\n===========================\n')
+            continue
+        for path in os.listdir(back_path):
+            real_path = os.path.join(back_path, path)
+            tar_path = os.path.join(constants.path_ini, path)
+            if os.path.isfile(real_path):
+                # 复制图标以及json文件
+                FilePlugin.copy_file(real_path, tar_path)
+            elif os.path.isdir(real_path):
+                if not os.path.exists(tar_path):
+                    # 创建 ini/*** 包名文件夹
+                    FilePlugin.mkdir(tar_path)
+                for file in os.listdir(real_path):
+                    if os.path.isfile(os.path.join(real_path, file)):
+                        # 复制jks
+                        FilePlugin.copy_file(os.path.join(real_path, file), os.path.join(tar_path, file))
+        jks_ = os.path.join(constants.path_ini, package + "/yr_release_key.jks")
+        icon_ = os.path.join(constants.path_ini, "app_icon.png")
+        json_ = os.path.join(constants.path_ini, "package.json")
+        if not os.path.exists(jks_):
+            print(
+                f'jks文件不存在 >>>> {jks_}\n===========================\n包名{package}因配置无效被跳过！\n===========================\n')
+            continue
+        if not os.path.exists(icon_):
+            print(
+                f'图标文件不存在 >>>> {icon_}\n===========================\n包名{package}因配置无效被跳过！\n===========================\n')
+            continue
+        if not os.path.exists(json_):
+            print(
+                f'包配置文件不存在 >>>> {json_}\n===========================\n包名{package}因配置无效被跳过！\n===========================\n')
+            continue
+        assemble_single_()
     pass
 
 
-if __name__ == '__main__':
+def assemble_single_():
+    """
+    单个生成apk
+    :return:
+    """
     ini_package_name = PackageHelper.query_package_name()
     json_parser = PackageParser(ini_package_name, constants.path_ini + "/package.json")
 
@@ -70,11 +126,8 @@ if __name__ == '__main__':
     print(" ------- 隐藏权限弹窗说明：" + str(hide_permission_dialog))
     print(" ------- 隐藏部分充值弹窗：" + str(hide_dialog))
 
-    # print("按任意键继续 ....")
-    # with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
-    #     listener.join()
-
-    package_helper = PackageHelper(os.path.join(constants.path_root, "flutter-project/huajian-android"))
+    root_path = os.path.join(constants.path_root, "flutter-project/huajian-android")
+    package_helper = PackageHelper(root_path)
     if not package_helper.check_file_change_status(ini_package_name):
         # step 1 ：替换应用名
         package_helper.change_app_name(app_name)
@@ -86,22 +139,52 @@ if __name__ == '__main__':
         package_helper.change_app_package(package_name)
         # step 5 ：更改其他配置相关
         package_helper.change_app_ini(json_parser)
-    # step 6 : 修改图片以及文本文件md5
-    # package_helper.change_md5(package_helper.path_android)
+    # step 6 : 修改图片以及文本文件md5 （do_virus_change()方法内处理）
+    # package_helper.change_md5()
     # step 7 : 修改代码文件(除wxapi)所在包名路径
     package_helper.change_random_package()
-    # step 8 : 加密字符串
+    # step 8 : 加密字符串 & 加入报毒处理方案
     package_helper.encode_app_string()
+    do_virus_change()
     # step 9 : gradle
     print("开始执行gradle打包...")
-    # os.chdir(package_helper.path_android)
-    # # os.system("./gradlew aDR --offline")
-    # os.system("./gradlew assembleRelease")
+    os.chdir(package_helper.path_android)
+    # os.system("./gradlew aDR --offline")
+    # 因为引入了stringfog在打包前需要clean一下防止解码缓存导致的解码失败
+    os.system("./gradlew clean")
+    os.system("./gradlew assembleRelease")
     # # step 10 : 拷贝文件
-    # apk_dir = os.path.join(package_helper.path_android, "app/build/outputs/apk/standard/release")
-    # for sub_file in os.listdir(apk_dir):
-    #     if sub_file.endswith(".apk"):
-    #         tar_dir = os.path.join(constants.path_self, "pro_assembleapk/output")
-    #         FilePlugin.move_file(os.path.join(apk_dir, sub_file), tar_dir)
-    #         print("apk文件已经转移至文件夹 >>> " + tar_dir)
+    apk_dir = os.path.join(package_helper.path_android, "app/build/outputs/apk/standard/release")
+    for sub_file in os.listdir(apk_dir):
+        if sub_file.endswith(".apk"):
+            tar_dir = os.path.join(constants.path_self, "pro_assembleapk/output")
+            FilePlugin.move_file(os.path.join(apk_dir, sub_file), tar_dir)
+            print("apk文件已经转移至文件夹 >>> " + tar_dir)
+    print("回退源代码执行中")
+    git = Git(root_path)
+    git.remove_local_change()
     print("done!")
+    pass
+
+
+def do_virus_change():
+    if not need_regular:
+        return
+    process = Process(os.path.join(constants.path_root, "flutter-project/huajian-android"))
+    # 移除无用string
+    process.remove_unuse_strings_in_xml()
+    # 垃圾代码
+    process.build_junk_code_with_gradle()
+    # 重写用到的加密后字符串
+    process.rewrite_encrypt_string()
+    # 重写stringfog密钥
+    process.rewrite_string_fog()
+    # 更改可编辑文件md5
+    process.change_file_md5()
+    pass
+
+
+if __name__ == '__main__':
+    assemble_list_()
+    # assemble_single_()
+    pass

@@ -2,9 +2,9 @@ import os
 import re
 import sys
 import shutil
-
 import constants
 from plugin.FilePlugin import *
+from pro_assembleapk.Git import Git
 
 
 class Builder:
@@ -42,6 +42,9 @@ class Builder:
             print(f'垃圾代码未生成 === {self.junk_code}')
             return
         self.remove_to_target()
+        # 回退代码
+        # git = Git(self.junk_dir)
+        # git.remove_local_change()
         print(f'执行完成')
 
     def pre_change_package(self):

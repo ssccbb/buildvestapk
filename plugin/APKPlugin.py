@@ -10,8 +10,18 @@ class APKPlugin:
 
     @staticmethod
     def unzip_apk_file(apk_file_name, output_dir=None):
+        APKPlugin.unzip_apk_file_(apk_file_name, output_dir, 'apktool.jar')
+
+    @staticmethod
+    def unzip_andresguard_apk_file(apk_file_name, output_dir=None):
+        APKPlugin.unzip_apk_file_(apk_file_name, output_dir, 'apktool-2.3.2-andresguard.jar')
+
+    @staticmethod
+    def unzip_apk_file_(apk_file_name, output_dir=None, jar_file_name=None):
         """
         解压ak文件到指定目录
+        :param jar_file_name:
+        :param apk_tool_jar_name:
         :param apk_file_name:
         :param output_dir:
         :return:
@@ -20,7 +30,7 @@ class APKPlugin:
             output_dir = apk_file_name.replace(".apk", "")
         if not os.path.exists(output_dir):
             print("开始反编译原apk...")
-            path_apk_tool = os.path.join(constants.path_self, "jar/apktool.jar")
+            path_apk_tool = os.path.join(constants.path_self, f'jar/{jar_file_name}')
             cmd = f'java -jar {path_apk_tool} d {apk_file_name} -o {output_dir}'
             if os.system(cmd) == 0:
                 print("成功反编译原apk")
@@ -29,8 +39,17 @@ class APKPlugin:
 
     @staticmethod
     def zip_apk_file(apk_file_dir, apk_file=None):
+        APKPlugin.zip_apk_file_(apk_file_dir, apk_file, 'apktool.jar')
+
+    @staticmethod
+    def zip_andresguard_apk_file(apk_file_dir, apk_file=None):
+        APKPlugin.zip_apk_file_(apk_file_dir, apk_file, 'apktool-2.3.2-andresguard.jar')
+
+    @staticmethod
+    def zip_apk_file_(apk_file_dir, apk_file=None, jar_file_name=None):
         """
         把apk_file_dir文件夹打包成apk
+        :param jar_file_name:
         :param signer_file:
         :param apk_file_dir:
         :param apk_file:
@@ -39,7 +58,8 @@ class APKPlugin:
         if apk_file is None:
             apk_file = apk_file_dir + ".apk"
         print("开始打包新的apk...")
-        path_apk_tool = os.path.join(constants.path_self, "jar/apktool.jar")
+        path_apk_tool = os.path.join(constants.path_self, f'jar/{jar_file_name}')
+        os.system(f'java -jar {path_apk_tool} empty-framework-dir --force')
         cmd_zip = f'java -jar {path_apk_tool} b {apk_file_dir} -o {apk_file}'
         if os.system(cmd_zip) == 0:
             print("成功打包新的apk")

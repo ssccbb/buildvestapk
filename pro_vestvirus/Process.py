@@ -185,18 +185,35 @@ class Process:
         for line in open(aes.path_properties, 'r'):
             new_line = None
             if 'KEY_OPENINSTALL' in line:
-                new_line = 'KEY_OPENINSTALL=' + aes.get_new_encrypt_string(line.replace('KEY_OPENINSTALL=', '').replace('"', '').strip())+'\n'
+                new_line = 'KEY_OPENINSTALL=' + aes.get_new_encrypt_string(
+                    line.replace('KEY_OPENINSTALL=', '').replace('"', '').strip()) + '\n'
             if 'MAIN_CHANNEL' in line:
-                new_line = 'MAIN_CHANNEL="' + aes.get_new_encrypt_string(line.replace('MAIN_CHANNEL=', '').replace('"', '').strip()) + '"\n'
+                new_line = 'MAIN_CHANNEL="' + aes.get_new_encrypt_string(
+                    line.replace('MAIN_CHANNEL=', '').replace('"', '').strip()) + '"\n'
             if 'SUB_CHANNEL' in line:
-                new_line = 'SUB_CHANNEL="' + aes.get_new_encrypt_string(line.replace('SUB_CHANNEL=', '').replace('"', '').strip()) + '"\n'
+                new_line = 'SUB_CHANNEL="' + aes.get_new_encrypt_string(
+                    line.replace('SUB_CHANNEL=', '').replace('"', '').strip()) + '"\n'
             if new_line is None or len(new_line) <= 0:
                 continue
             properties_content = properties_content.replace(line, new_line)
         FilePlugin.wirte_str_to_file(properties_content, aes.path_properties)
         print(f'重写 gradle.properties 成功')
         # 替换key
-        FilePlugin.wirte_str_to_file(FilePlugin.read_str_from_file(aes.path_gradle).replace(aes.old_aes_key, aes.new_aes_key), aes.path_gradle)
+        FilePlugin.wirte_str_to_file(
+            FilePlugin.read_str_from_file(aes.path_gradle).replace(aes.old_aes_key, aes.new_aes_key), aes.path_gradle)
         print(f'重写 aes_key 成功')
         pass
 
+    def rewrite_string_fog(self):
+        aes = AES(self.path_android)
+        app_gradle_content = FilePlugin.read_str_from_file(aes.path_app_gradle)
+        match = re.compile("key\\s\\'\\w+\\'", re.M).search(app_gradle_content)
+        if match is not None:
+            key = match.group().strip().lstrip()
+            new_key = DictPlugin.random_string_full(18)
+            app_gradle_content = app_gradle_content.replace(key, f'key \'{new_key}\'')
+            FilePlugin.wirte_str_to_file(app_gradle_content, aes.path_app_gradle)
+            print(f'修改stringfog密钥成功！===={new_key}')
+        else:
+            print(f'修改stringfog密钥失败')
+        pass

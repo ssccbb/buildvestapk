@@ -228,14 +228,43 @@ class PackageHelper:
         pass
 
     @deco
-    def change_md5(self, path):
-        FilePlugin.reset_files_md5(path)
+    def change_md5(self):
+        """
+        重置项目内可编辑文件md5值
+        :return:
+        """
+        # FilePlugin.reset_files_md5(self.path_android)
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "app"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "library-beauty"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "library-commonlib"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "library-eventbus"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "library-im"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "module-community"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "module-ext"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "module-live"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "module-message"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "module-party"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "module-vchat"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "YR-Network"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "YR-Player"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "YR-SvgaImage"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "YR-Tools"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "YR-Uikit"))
+        FilePlugin.reset_files_md5(os.path.join(self.path_android, "commonlibrary"))
         pass
 
     @deco
     def encode_app_string(self):
         """
         替换加密字符串（待补全）
+        :return:
+        """
+        pass
+
+    @deco
+    def code_rollback(self):
+        """
+        每次重新打包时做代码回退
         :return:
         """
         pass
