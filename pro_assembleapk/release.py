@@ -17,8 +17,10 @@ from pro_vestvirus.Process import Process
 """
 # 是否需要在打包时加入报毒混淆
 need_regular = True
+# 是否是基准包
+need_base_apk = True
 # 需要生成的包名列表
-package_list = ['com.hnwqjui.romkdzpe', 'com.bqhflu.vgjyat']
+package_list = ['com.lgmtqi.eapjk']
 
 
 def assemble_list_():
@@ -67,6 +69,7 @@ def assemble_list_():
             print(
                 f'包配置文件不存在 >>>> {json_}\n===========================\n包名{package}因配置无效被跳过！\n===========================\n')
             continue
+        do_base_change()
         assemble_single_()
     pass
 
@@ -167,7 +170,45 @@ def assemble_single_():
     pass
 
 
+def do_base_change():
+    """
+    根据需要是否需要做马甲包配置修改
+    :return:
+    """
+    if not need_base_apk:
+        return
+    json_ = os.path.join(constants.path_ini, "package.json")
+    ini_ = FilePlugin.read_str_from_file(json_)
+    # "appName": "基准包应用名",
+    old_app_name = re.compile('"appName":\\s+".*"').search(ini_).group().strip().split(':')[1].replace('"', '').lstrip().strip()
+    new_app_name = '基准包应用名'
+    if old_app_name != new_app_name:
+        ini_ = ini_.replace(old_app_name, new_app_name)
+    # "hideSlogan": false,
+    old_hide_slogan = re.compile('"hideSlogan":\\s+(true|false)').search(ini_).group().strip().split(':')[1].lstrip().strip()
+    if old_hide_slogan != 'true':
+        ini_ = ini_.replace(f'"hideSlogan": {old_hide_slogan}', f'"hideSlogan": true')
+    # "hideSetting": false,
+    old_hide_setting = re.compile('"hideSetting":\\s+(true|false)').search(ini_).group().strip().split(':')[1].lstrip().strip()
+    if old_hide_setting != 'true':
+        ini_ = ini_.replace(f'"hideSetting": {old_hide_setting}', f'"hideSetting": true')
+    # "hideGuide": false,
+    old_hide_guide = re.compile('"hideGuide":\\s+(true|false)').search(ini_).group().strip().split(':')[1].lstrip().strip()
+    if old_hide_guide != 'true':
+        ini_ = ini_.replace(f'"hideGuide": {old_hide_guide}', f'"hideGuide": true')
+    # "hideTeen": false,
+    old_hide_teen = re.compile('"hideTeen":\\s+(true|false)').search(ini_).group().strip().split(':')[1].lstrip().strip()
+    if old_hide_teen != 'true':
+        ini_ = ini_.replace(f'"hideTeen": {old_hide_teen}', f'"hideTeen": true')
+    FilePlugin.wirte_str_to_file(ini_, json_)
+    pass
+
+
 def do_virus_change():
+    """
+    根据需要是否需要做报毒相关处理
+    :return:
+    """
     if not need_regular:
         return
     process = Process(os.path.join(constants.path_root, "flutter-project/huajian-android"))
