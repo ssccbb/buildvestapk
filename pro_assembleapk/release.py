@@ -20,7 +20,9 @@ need_regular = True
 # 是否是基准包
 need_base_apk = True
 # 需要生成的包名列表
-package_list = ['com.lgmtqi.eapjk']
+package_list = [
+    'com.qijre.huzwab'
+]
 
 
 def assemble_list_():

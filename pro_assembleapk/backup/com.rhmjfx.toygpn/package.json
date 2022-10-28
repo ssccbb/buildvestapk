@@ -1,0 +1,28 @@
+{
+  "com.rhmjfx.toygpn": {
+    "packageName": "com.rhmjfx.toygpn",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "72bdf673b3db4c32ac0659cc0a26470d",
+    "qqKey": [
+      "102022569",
+      "PjyznMglbM6e4OWR"
+    ],
+    "wechatKey": [
+      "wx0a9a525f76f5c6b6",
+      "c9023dc736044bc7c8d070edbe226c45"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

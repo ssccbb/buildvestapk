@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: yr
+创建日期: 2022-8-10
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.qfhdox.esunca, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.qfhdox.esunca, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 1a9cd57e
+有效期为 Wed Aug 10 11:10:14 CST 2022 至 Sun Aug 04 11:10:14 CST 2047
+证书指纹:
+	 MD5:  E7:A9:D5:2A:6E:FF:AA:97:97:63:CD:13:41:4E:82:43
+	 SHA1: 22:1A:C4:38:62:70:D9:45:C5:20:1A:B3:61:51:78:26:EB:F4:C3:D7
+	 SHA256: 18:1B:C6:48:3F:0C:0C:55:69:42:DD:55:34:5B:80:69:F3:E7:C6:9F:CD:8A:59:F8:AE:45:75:4B:0B:E0:30:EB
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 10 A0 51 69 A2 8B F4 D8   2E F7 D5 D1 DE 53 0E 41  ..Qi.........S.A
+0010: B6 98 58 A9                                        ..X.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

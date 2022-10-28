@@ -1,0 +1,28 @@
+{
+  "com.jylorqs.wtmfz": {
+    "packageName": "com.jylorqs.wtmfz",
+    "appName": "基准包应用名",
+    "versionName": "14.8.00",
+    "versionCode": "148000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "e95712a4ea68446f9d3804fc1a45f48a",
+    "qqKey": [
+      "102025818",
+      "MVR9dolTwBuPfgT2"
+    ],
+    "wechatKey": [
+      "wxaf1ca4cc0438265f",
+      "af178655a68029c864f68d9b7116e251"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": true,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": true,
+    "hideGuide": true,
+    "hideTeen": true,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

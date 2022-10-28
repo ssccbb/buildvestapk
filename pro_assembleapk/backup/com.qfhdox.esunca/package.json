@@ -1,0 +1,28 @@
+{
+  "com.qfhdox.esunca": {
+    "packageName": "com.qfhdox.esunca",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "76aa165c1463445da32e43e341dfb22d",
+    "qqKey": [
+      "102022567",
+      "9D3nJbfV7VfbJo58"
+    ],
+    "wechatKey": [
+      "wx67e5372b37f5145c",
+      "7875c580a840dc1999470537c9179e7a"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

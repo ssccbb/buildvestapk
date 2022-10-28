@@ -8,7 +8,7 @@ from pro_vestvirus.encrypt.AesEncry import *
 class AES:
 
     def __init__(self, path_android):
-        self.params_regular = f'public\\s+static\\s+final\\s+String\\s+([\\w_]+)\\s+=\\s+UseForBaoDu\\.getInstance\\(\\)\\.decodeAESString\\(".*"\\);?'
+        self.params_regular = f'public\\s+static\\s+final\\s+String\\s+([\\w_]+)\\s+=\\s+VestHelper\\.getInstance\\(\\)\\.decodeAESString\\(".*"\\);?'
 
         # yrAppKey yrAppId nimKey umengKey
         self.path_gradle = os.path.join(path_android, 'config.gradle')
@@ -16,7 +16,7 @@ class AES:
         self.path_properties = os.path.join(path_android, 'gradle.properties')
         # aesDecoder\\("\\w+"\\)
         self.path_app_gradle = os.path.join(path_android, 'app/build.gradle')
-        self.path_target_file = os.path.join(path_android, 'app/src/main/java/com/yr/huajian/vesttools/UseForBaoDu.java')
+        self.path_target_file = os.path.join(path_android, 'library-commonlib/src/main/java/com/yr/common/vest/VestHelper.java')
         self.path_files = [os.path.join(path_android, 'app/src/main/assets/domain_data.txt'),
                            os.path.join(path_android, 'app/src/main/assets/domain_evn_data.txt'),
                            os.path.join(path_android, 'app/src/main/assets/hj_privacy_enquire.txt')]

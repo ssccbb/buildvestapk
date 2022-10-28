@@ -1,0 +1,28 @@
+{
+  "com.qijre.huzwab": {
+    "packageName": "com.qijre.huzwab",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "3c8c0e0c2e0847589b8ec6c98e70d5e5",
+    "qqKey": [
+      "102025820",
+      "jOr7Azax61iBQREn"
+    ],
+    "wechatKey": [
+      "wx925518415616670f",
+      "a147a29d06297c33cbe0d7862ceba6f2"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

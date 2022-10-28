@@ -1,0 +1,28 @@
+{
+  "com.rnfs.dmgla": {
+    "packageName": "com.rnfs.dmgla",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "4a142382154b47b7a6c40d5f0a939a05",
+    "qqKey": [
+      "102025828",
+      "MCoFRSHzVryvdASi"
+    ],
+    "wechatKey": [
+      "wxfc3cea11b77c695d",
+      "f7010bc06ef26b6a659242244010b6de"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

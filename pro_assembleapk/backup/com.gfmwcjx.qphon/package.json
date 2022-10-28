@@ -1,0 +1,28 @@
+{
+  "com.gfmwcjx.qphon": {
+    "packageName": "com.gfmwcjx.qphon",
+    "appName": "基准包应用名",
+    "versionName": "14.8.00",
+    "versionCode": "148000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "ce4ba94d77ff49c999b247968ea11362",
+    "qqKey": [
+      "102020570",
+      "c7OVN5YrwrX2IOFv"
+    ],
+    "wechatKey": [
+      "wx0e6c9c383fe1f8e2",
+      "bc948f8ad74eac81e053ea3aa43d2609"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": true,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": true,
+    "hideGuide": true,
+    "hideTeen": true,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

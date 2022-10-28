@@ -1,6 +1,9 @@
 # coding=utf-8
 import constants
+from pro_vestvirus.encrypt.AesEncry import AESCipher
 from plugin.FilePlugin import *
+
+
 # os.chdir("/Users/sung/sung/flutter-project/huajian-android")
 # os.system("./gradle clean assembleRelease")
 
@@ -48,8 +51,6 @@ from plugin.FilePlugin import *
 # print(f'{DictPlugin.random_string_full(16)}')
 
 
-
-
 # from pro_vestvirus.encrypt.AesEncry import *
 #
 # domain = 'YapKaL1F5z5itlUYJJ7dGQ=='
@@ -57,3 +58,26 @@ from plugin.FilePlugin import *
 # print(aes.encrypt('aaaaaaaaaaaaa'))
 # print(aes.decrypt(domain))
 
+# from pro_assembleapk.Git import *
+# git = Git(os.path.join(constants.path_root, "flutter-project/huajian-android"))
+# git.reset_last_()
+
+
+def encrypt_string(key, string):
+    aes = AESCipher(key)
+    strings = aes.encrypt(string)
+    print(f'加密前 --> {string} 加密后 --> {strings}')
+    return strings
+
+
+def decrypt_string(key, string):
+    aes = AESCipher(key)
+    strings = aes.decrypt(string)
+    print(f'解密前 --> {string} 解密后 --> {strings}')
+    return strings
+
+# encrypt_string('KluXvp7UC0VnePtH', 'VTHUAJIAN')
+# encrypt_string('KluXvp7UC0VnePtH', '1')
+
+
+FilePlugin.change_str_in_binaryfile("aaa花花","huajian",os.path.join(constants.path_self,"resources.arsc"))

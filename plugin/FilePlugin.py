@@ -1,5 +1,6 @@
 import os
 import shutil
+import sys
 from binascii import a2b_hex
 import hashlib
 
@@ -479,3 +480,18 @@ class FilePlugin:
             for subdir in dirs:
                 count += 1
         return count
+
+    @staticmethod
+    def change_str_in_binaryfile(old_str: str, new_str: str, path):
+        if not os.path.exists(path) and not os.path.isfile(path):
+            print(f'检查传入文件路径是否合法？=====>>>>{path}')
+            sys.exit(404)
+            return
+        new_path = path.split(".")[0]+"_copy."+path.split(".")[1]
+        with open(path, 'rb') as f:
+            data = f.read()
+        with open(new_path, 'wb') as f:
+            f.write(data.replace(old_str.encode('utf-8'), new_str.encode('utf-8')))
+        os.unlink(path)
+        os.rename(new_path, path)
+        pass

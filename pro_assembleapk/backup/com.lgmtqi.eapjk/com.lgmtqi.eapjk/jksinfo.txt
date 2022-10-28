@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: yr
+创建日期: 2022-8-10
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.lgmtqi.eapjk, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.lgmtqi.eapjk, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 44159c67
+有效期为 Wed Aug 10 11:11:22 CST 2022 至 Sun Aug 04 11:11:22 CST 2047
+证书指纹:
+	 MD5:  2D:85:13:A6:14:DF:B8:94:DB:A5:6B:9A:2C:96:F7:E7
+	 SHA1: B2:47:FA:A3:97:A7:3B:68:73:A5:60:62:49:F0:0A:24:08:F3:FE:72
+	 SHA256: D0:53:D6:EB:0F:48:59:10:3D:8F:B4:2E:3C:56:C6:2C:97:79:FD:BA:ED:C6:FA:6B:88:20:71:5F:CF:D6:11:EE
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 3B 3A 0F DD 06 AD B7 9E   EB C1 8A 7D EA 5D C9 DA  ;:...........]..
+0010: 55 89 7F 6E                                        U..n
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

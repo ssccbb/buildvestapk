@@ -1,0 +1,28 @@
+{
+  "com.rxgh.dobzkp": {
+    "packageName": "com.rxgh.dobzkp",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "4b586d7383a74fb794657c30d678e29f",
+    "qqKey": [
+      "102022575",
+      "RhlaArLcgVAAxVjI"
+    ],
+    "wechatKey": [
+      "wx21ea4820dab14c04",
+      "c43373c3ed414635346f11a587d6af58"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

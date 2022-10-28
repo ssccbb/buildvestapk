@@ -1,0 +1,28 @@
+{
+  "com.lgmtqi.eapjk": {
+    "packageName": "com.lgmtqi.eapjk",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "2ba7b331e62d462c84f3854b9f755766",
+    "qqKey": [
+      "102022565",
+      "vupgTCqQxaAiDf5T"
+    ],
+    "wechatKey": [
+      "wx999107b57d8d751e",
+      "1f8b06319564bf6d2d7134e4b0907a59"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

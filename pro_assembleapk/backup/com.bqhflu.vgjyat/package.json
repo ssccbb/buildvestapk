@@ -1,0 +1,28 @@
+{
+  "com.bqhflu.vgjyat": {
+    "packageName": "com.bqhflu.vgjyat",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "a54182d5c61d44709d582be1891fea75",
+    "qqKey": [
+      "102020466",
+      "1zmLjtoVx73kHdmh"
+    ],
+    "wechatKey": [
+      "wx43c47ea4fb7de31c",
+      "7c40105878366b24914c3731f455aaa9"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}

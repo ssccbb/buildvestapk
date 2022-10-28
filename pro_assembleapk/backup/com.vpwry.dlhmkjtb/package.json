@@ -1,0 +1,28 @@
+{
+  "com.vpwry.dlhmkjtb": {
+    "packageName": "com.vpwry.dlhmkjtb",
+    "appName": "花间",
+    "versionName": "14.9.00",
+    "versionCode": "149000",
+    "channel": "BetaAPPHuajian_1",
+    "ydKey": "8bafa43406df452a96090cf685c3cba8",
+    "qqKey": [
+      "102022579",
+      "7A0d1B7duwjHaebM"
+    ],
+    "wechatKey": [
+      "wx0e6c9c383fe1f8e2",
+      "bc948f8ad74eac81e053ea3aa43d2609"
+    ],
+    "openinstallKey": "z5yc32",
+    "hideSlogan": false,
+    "hideOneYuan": false,
+    "hideQQLogin": false,
+    "hideWXLogin": false,
+    "hideSetting": false,
+    "hideGuide": false,
+    "hideTeen": false,
+    "hidePermissionDialog": true,
+    "hideDialog": true
+  }
+}
