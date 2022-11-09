@@ -180,7 +180,7 @@ class PackageHelper:
         self.replace_content("QQ_APPID=", qq_ini[0].strip(), properties_file)
         self.replace_content("QQ_KEY=", qq_ini[1].strip(), properties_file)
         wechat_ini = ini_dict.read_value_with_key("wechatKey")
-        self.replace_content("CHROME_PAY=", base_apk, properties_file)
+        self.replace_content("CHROME_PAY=", "true" if base_apk else "false", properties_file)
         self.replace_content("WECHAT_APPID=", wechat_ini[0].strip(), properties_file)
         self.replace_content("WECHAT_KEY=", wechat_ini[1].strip(), properties_file)
         # self.replace_content("KEY_OPENINSTALL=", ini_dict.read_value_with_key("openinstallKey"),
