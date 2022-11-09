@@ -34,7 +34,7 @@ class PackageHelper:
         # 安卓项目res路径
         self.path_android_res = self.path_android + "/app/src/main/res"
         # 安卓项目包路径
-        self.path_android_package = self.path_android + "/app/src/main/java/com/syzdmsc/hjbm"
+        self.path_android_package = self.path_android + "/app/src/main/java/com/yr/jksdemo"
         # gradle.properties配置参数文件路径
         self.path_android_properties = self.path_android + "/gradle.properties"
         # 字符串文件路径
@@ -160,7 +160,7 @@ class PackageHelper:
         """
         pass
 
-    def change_app_ini(self, ini_dict):
+    def change_app_ini(self, base_apk, ini_dict):
         """
         修改其他配置参数
         :param ini_dict:
@@ -180,6 +180,7 @@ class PackageHelper:
         self.replace_content("QQ_APPID=", qq_ini[0].strip(), properties_file)
         self.replace_content("QQ_KEY=", qq_ini[1].strip(), properties_file)
         wechat_ini = ini_dict.read_value_with_key("wechatKey")
+        self.replace_content("CHROME_PAY=", base_apk, properties_file)
         self.replace_content("WECHAT_APPID=", wechat_ini[0].strip(), properties_file)
         self.replace_content("WECHAT_KEY=", wechat_ini[1].strip(), properties_file)
         # self.replace_content("KEY_OPENINSTALL=", ini_dict.read_value_with_key("openinstallKey"),

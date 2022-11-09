@@ -27,7 +27,7 @@ old_app_jks = "yr_release_key.jks"
 # 代码内旧的应用包名
 old_app_package = "com.yr.jksdemo"
 # 代码内旧的微信回调路径
-old_app_wxapi_path = "com.syzdmsc.hjbm"
+old_app_wxapi_path = "com.yr.jksdemo"
 
 # SDK路径
 path_android_sdk = "/Users/sung/sung/android-tools/sdk/android-sdk-macosx"

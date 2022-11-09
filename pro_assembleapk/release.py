@@ -18,10 +18,11 @@ from pro_vestvirus.Process import Process
 # 是否需要在打包时加入报毒混淆
 need_regular = True
 # 是否是基准包
-need_base_apk = True
+need_base_apk = False
 # 需要生成的包名列表
 package_list = [
-    'com.qijre.huzwab'
+    'com.syzdmsc.hjbm',
+    'com.bqhflu.vgjyat'
 ]
 
 
@@ -143,7 +144,7 @@ def assemble_single_():
         # step 4 ：更改应用包名以及wxapi回调路径包名
         package_helper.change_app_package(package_name)
         # step 5 ：更改其他配置相关
-        package_helper.change_app_ini(json_parser)
+        package_helper.change_app_ini(need_base_apk, json_parser)
     # step 6 : 修改图片以及文本文件md5 （do_virus_change()方法内处理）
     # package_helper.change_md5()
     # step 7 : 修改代码文件(除wxapi)所在包名路径

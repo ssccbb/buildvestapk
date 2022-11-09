@@ -17,7 +17,7 @@ class Finder:
         self.file_names = []
         self.dir_names = []
         self.dir_new_names = {}
-        self.ignore_name = {'android', 'test', 'v7', 'syzdmsc', 'hjbm', 'aop', 'androidTest'}
+        self.ignore_name = {'android', 'test', 'v7', 'syzdmsc','yr','jksdemo', 'hjbm', 'aop', 'androidTest'}
         self.package_names = {}
 
     def find_same_name_class(self, module_path):
