@@ -4,7 +4,7 @@ import os
 print("-----------------------------")
 
 # 需要的jks数量
-__jks_number = 20
+__jks_number = 30
 # 是否需要生成jksinfo.txt保存md5等相关信息
 __jks_info = True
 # 是否需要自动随机生成包名
@@ -19,6 +19,7 @@ __dir = os.path.abspath(".")
 __keystore = "yr_release_key.jks"
 # alias：设置别名
 __alias = "yr"
+__random_alias = True
 # storepass：设置文件的密码
 __storepass = "LS880617!@#"
 # keypass：设置key的密码

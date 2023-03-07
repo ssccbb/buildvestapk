@@ -98,8 +98,9 @@ class APKPlugin:
         """
         if dex_file is None:
             jar_file = dex_file.replace(".dex", ".jar")
-        path_dex2jar = os.path.join(constants.path_self, "dex2jar-2.0/d2j-dex2jar.bat")
-        cmd = f'{path_dex2jar}  --output {jar_file} {dex_file}'
+        path_dex2jar = os.path.join(constants.path_self, "dex2jar-2.0/d2j-dex2jar.sh")
+        cmd = f'sh {path_dex2jar} -f {dex_file}'
+        print(f'cmd={cmd}')
         if os.system(cmd) == 0:
             print("成功把dex文件转化为jar文件")
         else:

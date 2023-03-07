@@ -3,6 +3,9 @@ import os, config, utils, pexpect, time, sys
 
 # 批量生成jks
 # 开始创建需要的文件夹
+import random
+import string
+
 if config.__random_package:
     utils.mkdirs_with_package()
 else:
@@ -11,8 +14,12 @@ else:
 utils.creat_jksinfos()
 for _dir in os.listdir(utils._jks_file_):
     _file_path = utils._jks_file_ + "/" + _dir + "/" + config.__keystore
+    if config.__random_alias:
+        alias = ''.join(random.sample(string.ascii_lowercase, 3))
+    else:
+        alias = config.__alias
     _shell_genkey = "keytool -genkey -v -keystore " + _file_path \
-                    + " -alias " + config.__alias + " -storepass " + config.__storepass \
+                    + " -alias " + alias + " -storepass " + config.__storepass \
                     + " -keypass " + config.__keypass + " -keyalg " + config.__keyalg \
                     + " -keysize " + str(config.__keysize) + " -validity " + str(config.__validity)
     print("ready to execute cdmstr : " + _shell_genkey)

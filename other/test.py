@@ -1,5 +1,6 @@
 # coding=utf-8
 import constants
+from plugin.DictPlugin import DictPlugin
 from pro_vestvirus.encrypt.AesEncry import AESCipher
 from plugin.FilePlugin import *
 
@@ -78,6 +79,17 @@ def decrypt_string(key, string):
 
 # encrypt_string('KluXvp7UC0VnePtH', 'VTHUAJIAN')
 # encrypt_string('KluXvp7UC0VnePtH', '1')
+# encrypt_string('5aVqoPMcHlRLtSIE','apizhouqipa1156415')
+# decrypt_string('5aVqoPMcHlRLtSIE','RoOtoetWt0PCisrEO3P/2+3CNmO/Iv6RHNdxiLobg0BwOn9SeyPgdhAjMV/nWcdaZbUZO18YjYQ3bngCCUbDvw==')
+decrypt_string('KluXvp7UC0VnePtH','dLFLpW3MycQ7LYn5n8cujMXP8uMCY8/S8kzxtisC56YDr5tVojRz5HbKLB+Ydr7r')
+decrypt_string('KluXvp7UC0VnePtH','2OTLN1brGLTeEMi2Gupvhw==')
+decrypt_string('KluXvp7UC0VnePtH','JRjYVP9PStRs7RIVLlih+Q==')
+decrypt_string('KluXvp7UC0VnePtH','xvuHNo/R6dbKdgvYVeQ7GA==')
+decrypt_string('KluXvp7UC0VnePtH','VyVmZSTUitr4jAo10wexv4fWeJjfx5UR1doB/61Mr+czv8GU0AXlgBq3uitC82gx')
+decrypt_string('KluXvp7UC0VnePtH','Fo6H8jCJHHjm6u7R7nmIZfIIeoARsYpEAR6vJC7YOtLApjwVqy0ayUwlsNymSPAk')
+decrypt_string('KluXvp7UC0VnePtH','FIc1Et7mGa3LoSzWCzXtQA==')
+decrypt_string('KluXvp7UC0VnePtH','wckSva2CF2S6iBjo5xWDOg==')
+decrypt_string('KluXvp7UC0VnePtH','KgIO48rayLTNyDKn+WlS1Qj5DTGKPgn7iqXSDWD6nt/uDy35zru0snslCW6dOyro')
+decrypt_string('KluXvp7UC0VnePtH','WLvPGP55DGbSSKEJlYbrhg==')
 
-
-FilePlugin.change_str_in_binaryfile("aaa花花","huajian",os.path.join(constants.path_self,"resources.arsc"))
+# FilePlugin.change_str_in_binaryfile("aaa花花","huajian",os.path.join(constants.path_self,"resources.arsc"))
