@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: rxd
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.wulram.yfpotskx, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.wulram.yfpotskx, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 65b5228f
+有效期为 Mon Jan 30 18:28:08 CST 2023 至 Fri Jan 24 18:28:08 CST 2048
+证书指纹:
+	 MD5:  C8:49:37:60:F4:41:6E:B8:53:CA:C1:BD:66:31:AD:E0
+	 SHA1: DC:E1:50:AD:D7:69:20:55:A9:EF:F0:0F:0F:ED:81:60:86:29:0D:34
+	 SHA256: 82:FD:32:02:BB:BB:A0:4E:75:C8:82:D8:5A:01:72:85:12:82:8C:25:26:29:92:CA:AF:71:49:AB:CE:77:3E:21
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 1D EC D0 11 E0 0F 76 41   FE 9B B1 00 2F C7 97 68  ......vA..../..h
+0010: 1C 16 83 45                                        ...E
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

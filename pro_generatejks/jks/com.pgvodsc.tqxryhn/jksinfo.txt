@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: isl
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.pgvodsc.tqxryhn, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.pgvodsc.tqxryhn, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 16ce7ef3
+有效期为 Mon Jan 30 18:27:26 CST 2023 至 Fri Jan 24 18:27:26 CST 2048
+证书指纹:
+	 MD5:  56:73:C6:41:54:43:DE:14:BE:97:D4:98:28:7F:B7:50
+	 SHA1: 71:92:63:23:F3:00:0E:17:E8:8A:8C:33:BD:14:7D:DC:8B:54:81:8B
+	 SHA256: D4:49:82:3B:01:16:9A:90:E1:5E:4A:8C:4E:94:BB:44:66:A6:D9:13:0D:EF:F7:A7:16:84:2C:9C:CA:68:21:77
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: F8 8D C6 B7 87 33 67 6E   1B 68 16 45 58 78 D7 BE  .....3gn.h.EXx..
+0010: AB F4 6D 3B                                        ..m;
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

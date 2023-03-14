@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: coq
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.jpglm.vrdsfuy, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.jpglm.vrdsfuy, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 1bcfc66e
+有效期为 Mon Jan 30 18:27:42 CST 2023 至 Fri Jan 24 18:27:42 CST 2048
+证书指纹:
+	 MD5:  9A:2B:AB:E1:53:CF:3D:E8:A6:52:7E:A8:62:0D:EA:37
+	 SHA1: BF:D4:CE:78:56:6D:68:59:8F:2B:59:CD:1A:A7:D1:02:D3:F4:C2:E1
+	 SHA256: 8F:90:FB:BE:89:0E:5D:FC:17:44:8A:A4:23:5D:2A:55:8C:3E:4B:30:E4:4D:02:A5:AC:D9:12:98:2A:1F:44:99
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 03 6E B6 89 DE 9E 42 35   E4 9A 09 71 1F 6B A2 63  .n....B5...q.k.c
+0010: A8 70 57 C7                                        .pW.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

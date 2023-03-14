@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: sjv
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.xinmjl.pbvodwz, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.xinmjl.pbvodwz, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 5e03e1f3
+有效期为 Mon Jan 30 18:27:11 CST 2023 至 Fri Jan 24 18:27:11 CST 2048
+证书指纹:
+	 MD5:  22:2C:60:20:C6:66:63:90:36:66:BE:41:B2:D3:82:5B
+	 SHA1: F9:71:57:C6:43:1C:06:D4:4A:B2:9D:F0:54:B7:44:DE:0D:A4:FC:01
+	 SHA256: AB:49:A3:CC:E2:C0:E4:8A:97:A0:2E:CA:75:D4:6A:88:85:41:EB:55:56:67:F7:5F:94:5B:61:AB:2D:5F:11:5E
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: D2 29 E8 9B BE C0 34 B6   67 73 BF 14 8C 93 89 6E  .)....4.gs.....n
+0010: 07 EE 8D C9                                        ....
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

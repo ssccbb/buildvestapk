@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: url
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.qpmzysd.xojfkinc, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.qpmzysd.xojfkinc, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 768ef5a5
+有效期为 Mon Jan 30 18:27:53 CST 2023 至 Fri Jan 24 18:27:53 CST 2048
+证书指纹:
+	 MD5:  7A:7E:0C:08:2A:64:08:B1:91:07:CB:A7:38:96:A5:AF
+	 SHA1: 01:09:FA:50:B8:A4:3E:9B:E1:12:8B:ED:40:55:DC:EF:40:77:58:D9
+	 SHA256: 06:D5:B8:43:C0:B0:B0:7E:FF:1B:33:3E:56:0A:40:AE:8E:5B:6A:22:A7:65:4D:FD:BD:72:86:37:A9:CB:BE:89
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 50 11 8E 91 B7 68 24 65   F4 98 39 C5 45 7C 59 DD  P....h$e..9.E.Y.
+0010: 73 D3 38 A0                                        s.8.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

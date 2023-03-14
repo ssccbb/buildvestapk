@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: csx
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.damuz.jfshei, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.damuz.jfshei, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 9015818
+有效期为 Mon Jan 30 18:27:03 CST 2023 至 Fri Jan 24 18:27:03 CST 2048
+证书指纹:
+	 MD5:  47:F0:CD:08:78:22:11:EB:2F:51:E8:7E:20:33:ED:2A
+	 SHA1: E6:4F:96:F1:D0:5D:E2:7B:12:EA:2F:C5:F7:6A:56:A5:2F:44:2C:B6
+	 SHA256: CE:CB:D9:45:0F:8F:3A:9C:72:50:24:A5:1A:4F:A1:9D:0F:09:0E:14:DB:56:8B:87:95:E3:EB:CD:55:81:23:77
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 01 95 16 A3 91 1E 09 27   5C 1E 44 4F 70 D7 00 89  .......'\.DOp...
+0010: 88 72 00 95                                        .r..
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

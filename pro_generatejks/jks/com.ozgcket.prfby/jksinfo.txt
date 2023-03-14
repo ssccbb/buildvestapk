@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: zvi
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.ozgcket.prfby, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.ozgcket.prfby, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 25afb24e
+有效期为 Mon Jan 30 18:28:04 CST 2023 至 Fri Jan 24 18:28:04 CST 2048
+证书指纹:
+	 MD5:  34:2E:50:A4:56:25:FB:5F:6E:E6:9E:41:DF:24:11:7A
+	 SHA1: DB:CF:6C:58:8B:B7:D7:2D:15:68:03:77:F9:97:8F:58:5F:47:92:63
+	 SHA256: 12:D6:8E:17:49:69:47:82:B9:00:E1:60:F1:5B:84:B9:03:FF:2D:27:1E:B4:9D:ED:96:FC:15:A8:E8:8B:1A:70
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 65 9E 97 E9 A8 09 B7 55   BE 9D 8A 75 04 53 3C C0  e......U...u.S<.
+0010: B1 CA 06 9D                                        ....
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

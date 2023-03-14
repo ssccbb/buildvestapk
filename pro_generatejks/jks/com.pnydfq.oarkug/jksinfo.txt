@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: mwk
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.pnydfq.oarkug, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.pnydfq.oarkug, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 4a2eaa2b
+有效期为 Mon Jan 30 18:27:57 CST 2023 至 Fri Jan 24 18:27:57 CST 2048
+证书指纹:
+	 MD5:  98:AC:D3:EF:03:B1:30:2F:BC:B7:A7:B9:CA:D8:7A:83
+	 SHA1: 7B:8C:F6:C5:96:22:5B:B3:50:DA:B0:F5:06:C5:D0:74:61:90:D5:CB
+	 SHA256: 7E:18:57:4B:C8:17:D3:3A:18:9B:00:AB:A3:6F:72:54:14:C9:6B:3D:84:92:46:17:16:B0:FC:84:08:A9:76:0F
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 1C 9C B5 57 0C B3 E9 7C   D4 F5 DA FB 0D 7C 26 49  ...W..........&I
+0010: 85 31 41 3A                                        .1A:
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

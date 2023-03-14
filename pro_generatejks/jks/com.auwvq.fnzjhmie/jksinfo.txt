@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: wvh
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.auwvq.fnzjhmie, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.auwvq.fnzjhmie, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 63db00f5
+有效期为 Mon Jan 30 18:27:45 CST 2023 至 Fri Jan 24 18:27:45 CST 2048
+证书指纹:
+	 MD5:  C8:99:F3:75:55:D2:9F:D2:A6:98:38:5D:D1:12:A8:76
+	 SHA1: BD:36:C1:D8:E6:C1:DD:10:AF:00:66:3B:FD:0D:BA:FA:7B:73:1C:C5
+	 SHA256: 58:D9:8F:34:D4:FF:1D:F6:B8:9A:1D:A3:D3:C4:CB:AD:61:04:08:B4:B3:D3:8E:36:47:1F:1A:CF:5A:9A:45:30
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 2A DF 66 B3 9F B2 34 0A   F4 80 4E 9B F6 D1 95 7C  *.f...4...N.....
+0010: EC F1 BE F1                                        ....
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

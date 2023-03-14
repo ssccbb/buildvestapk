@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: vxi
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.yxlhrea.qsktz, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.yxlhrea.qsktz, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 65ec67c3
+有效期为 Mon Jan 30 18:26:37 CST 2023 至 Fri Jan 24 18:26:37 CST 2048
+证书指纹:
+	 MD5:  63:DD:50:FC:F1:2D:3E:EE:22:EF:85:09:0E:23:F6:BB
+	 SHA1: E7:D4:9B:5C:82:45:F8:58:6B:5A:04:11:F4:0F:00:05:D3:CF:7A:DD
+	 SHA256: 61:DF:37:07:62:54:6C:07:41:08:1C:4B:E2:D7:62:D3:00:6E:59:8D:DA:55:14:A5:CD:15:92:06:BA:CC:5F:4D
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 28 17 93 A7 3D 48 8A A7   95 CB 30 1A 13 1D D5 AB  (...=H....0.....
+0010: 17 27 6B FD                                        .'k.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

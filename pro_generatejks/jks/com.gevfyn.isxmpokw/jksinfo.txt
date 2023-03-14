@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: pyn
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.gevfyn.isxmpokw, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.gevfyn.isxmpokw, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 7aa7dfe4
+有效期为 Mon Jan 30 18:26:48 CST 2023 至 Fri Jan 24 18:26:48 CST 2048
+证书指纹:
+	 MD5:  1F:D1:A5:D2:3F:03:46:1E:60:F7:73:03:E5:66:6D:DF
+	 SHA1: ED:E9:1F:EE:DD:BF:94:83:53:8C:B5:88:C1:5B:7E:54:15:E7:2E:80
+	 SHA256: 44:22:C3:22:1E:A4:48:DB:B7:C5:15:A7:54:AB:BC:8D:F2:30:CB:F7:0B:5E:AF:A0:FB:D5:D5:6D:41:00:F1:A2
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: AD 2A 99 69 14 F9 E3 E7   AA AB 0B 7E 6B 13 AB 75  .*.i........k..u
+0010: 16 C5 E0 23                                        ...#
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

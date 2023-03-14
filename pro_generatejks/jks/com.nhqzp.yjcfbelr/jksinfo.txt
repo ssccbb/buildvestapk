@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: vgd
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.nhqzp.yjcfbelr, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.nhqzp.yjcfbelr, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 335f4983
+有效期为 Mon Jan 30 18:27:49 CST 2023 至 Fri Jan 24 18:27:49 CST 2048
+证书指纹:
+	 MD5:  21:70:1C:71:3F:37:86:91:F2:48:B6:C2:31:5A:04:91
+	 SHA1: 09:C4:B0:DD:3E:2D:6E:D6:4B:58:58:0D:8C:74:24:30:0C:B5:0D:A5
+	 SHA256: AA:AB:C1:D8:9A:5E:2E:D1:05:30:22:82:E0:0E:2B:2E:40:EB:35:95:7D:2A:17:56:9A:E3:37:6F:AD:FA:29:7A
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: B3 F2 84 30 5E 01 E0 A3   F5 16 38 8D 78 93 64 AB  ...0^.....8.x.d.
+0010: BC 69 F3 21                                        .i.!
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

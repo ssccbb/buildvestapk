@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: wmq
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.ioeg.frvlzmca, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.ioeg.frvlzmca, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 17d95a6f
+有效期为 Mon Jan 30 18:27:30 CST 2023 至 Fri Jan 24 18:27:30 CST 2048
+证书指纹:
+	 MD5:  34:76:0C:F9:D6:0E:9B:0E:45:89:44:10:74:77:48:46
+	 SHA1: BB:A6:7B:12:2B:3D:62:90:77:33:75:F8:BA:A9:55:BB:49:86:CA:0C
+	 SHA256: B8:33:BA:2C:E0:A8:54:26:F1:65:22:82:81:EC:92:5E:76:AD:D3:CB:A4:D5:0D:68:AD:9F:7E:94:61:6C:B3:55
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 5F 73 EC 09 57 6C AE D1   BF CF 55 CA 25 47 A2 0B  _s..Wl....U.%G..
+0010: 83 11 34 80                                        ..4.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

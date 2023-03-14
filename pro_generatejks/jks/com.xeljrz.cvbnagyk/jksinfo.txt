@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: nwp
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.xeljrz.cvbnagyk, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.xeljrz.cvbnagyk, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 4fc354fb
+有效期为 Mon Jan 30 18:26:59 CST 2023 至 Fri Jan 24 18:26:59 CST 2048
+证书指纹:
+	 MD5:  DF:1F:59:57:2F:8B:70:D7:09:B3:4C:2B:36:D1:F9:D2
+	 SHA1: A0:AA:51:38:3F:FC:89:5B:0B:66:8B:87:6D:DD:31:8F:25:07:79:8E
+	 SHA256: 92:8B:1D:8E:D3:47:60:47:0D:2C:E2:9A:F6:A2:4F:F4:9A:E2:0E:B4:0F:C0:3F:54:1A:A0:F0:1E:6A:D9:9B:66
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 5A 98 80 11 FF 94 F1 26   1D 18 B5 CC DF BD 9A B7  Z......&........
+0010: F2 1C 84 B4                                        ....
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

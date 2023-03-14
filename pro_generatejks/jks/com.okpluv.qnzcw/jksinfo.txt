@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: qzo
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.okpluv.qnzcw, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.okpluv.qnzcw, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 7a6b3e8b
+有效期为 Mon Jan 30 18:26:33 CST 2023 至 Fri Jan 24 18:26:33 CST 2048
+证书指纹:
+	 MD5:  9D:72:FE:7D:E0:72:D1:8D:A9:7B:62:8C:3D:A7:04:D3
+	 SHA1: 58:F5:D5:74:F2:3C:AB:0C:E3:F1:7B:62:AB:B8:6F:D9:83:30:95:4E
+	 SHA256: C8:E2:1B:B5:9F:96:A5:A5:3D:52:F8:59:6E:13:D5:FD:C3:C0:AB:3A:50:4D:69:2B:41:72:BE:4B:B7:B0:2B:34
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 04 AB F8 CA 88 4D 74 61   F5 04 D5 A2 A9 8E C8 BE  .....Mta........
+0010: 31 A4 1B BA                                        1...
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

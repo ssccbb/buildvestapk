@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: evb
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.uwqs.jpirtd, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.uwqs.jpirtd, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 583dada5
+有效期为 Mon Jan 30 18:27:15 CST 2023 至 Fri Jan 24 18:27:15 CST 2048
+证书指纹:
+	 MD5:  5D:CB:A5:83:E4:35:81:E4:8C:97:33:1F:B8:B9:D7:27
+	 SHA1: 23:A1:3B:9D:4F:3F:31:DF:35:C1:26:0F:73:79:A4:F8:B2:6D:74:61
+	 SHA256: AE:DB:F9:A5:C4:48:69:7C:7C:25:F6:17:1E:A3:D2:C6:45:B5:48:A4:11:4B:03:E3:B2:19:AA:2D:F8:B2:85:AA
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 25 1A 49 DE 02 95 5F 07   7E 23 02 DA C6 B1 B1 9A  %.I..._..#......
+0010: 6C 36 DB 78                                        l6.x
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

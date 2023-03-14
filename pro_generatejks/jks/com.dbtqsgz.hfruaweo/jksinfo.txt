@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: vsh
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.dbtqsgz.hfruaweo, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.dbtqsgz.hfruaweo, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 7632bf26
+有效期为 Mon Jan 30 18:27:38 CST 2023 至 Fri Jan 24 18:27:38 CST 2048
+证书指纹:
+	 MD5:  2A:A3:C5:5E:18:EF:BA:A8:23:87:CA:33:DD:C3:E1:63
+	 SHA1: A3:44:06:AE:0D:45:BE:25:1E:00:27:44:1B:E2:5A:91:2A:52:F2:19
+	 SHA256: 46:43:2D:92:AB:C4:DD:81:80:CC:5E:6A:03:96:F4:AE:30:98:FB:7C:8F:9C:CA:56:34:D3:2E:6B:88:CB:50:60
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 55 7B 4D 81 96 AE 89 0F   9D 96 80 F0 3E AA 5B 47  U.M.........>.[G
+0010: B6 AA 4C D1                                        ..L.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

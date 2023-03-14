@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: wtv
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.lzwoe.rdgiyxb, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.lzwoe.rdgiyxb, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 633f3fc0
+有效期为 Mon Jan 30 18:28:12 CST 2023 至 Fri Jan 24 18:28:12 CST 2048
+证书指纹:
+	 MD5:  E2:E3:67:35:C8:D6:7F:AE:24:03:C3:BF:F8:CF:37:3B
+	 SHA1: 97:03:2A:53:4D:D1:44:91:B2:69:C6:93:A3:70:96:40:12:23:AB:7B
+	 SHA256: 32:AF:93:57:C3:28:9B:64:71:E9:1B:99:FF:EE:C4:E9:46:C7:C4:82:0E:2E:90:2D:61:CD:3D:FC:D8:69:CE:35
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 68 13 2A 8D 31 68 6B 54   6B 06 48 4F 55 B7 5E DF  h.*.1hkTk.HOU.^.
+0010: FC 65 60 F6                                        .e`.
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

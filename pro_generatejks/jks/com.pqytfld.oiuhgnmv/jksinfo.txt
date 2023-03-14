@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: iba
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.pqytfld.oiuhgnmv, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.pqytfld.oiuhgnmv, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 7f362558
+有效期为 Mon Jan 30 18:27:22 CST 2023 至 Fri Jan 24 18:27:22 CST 2048
+证书指纹:
+	 MD5:  58:0B:F5:FA:38:6F:39:31:72:53:20:2B:77:52:88:53
+	 SHA1: D2:EC:57:F8:6C:1E:CC:80:89:7F:50:E2:E5:A7:82:0F:EC:4D:0D:0F
+	 SHA256: B4:77:D2:27:33:42:96:24:01:14:99:B6:AC:14:64:7B:F4:6F:59:B9:CD:D5:85:E5:2A:57:96:95:6C:6B:A4:B1
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: EA 28 F9 D4 A7 D3 AF 15   07 67 75 18 FC 6C F5 72  .(.......gu..l.r
+0010: 88 BC 7C 81                                        ....
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: zla
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.pyebtlh.nxqsfc, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.pyebtlh.nxqsfc, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 50b444a1
+有效期为 Mon Jan 30 18:28:00 CST 2023 至 Fri Jan 24 18:28:00 CST 2048
+证书指纹:
+	 MD5:  DD:BF:12:84:EF:11:CF:59:A0:47:E7:E4:17:2A:B8:CA
+	 SHA1: 34:14:15:E5:57:50:D9:BD:C4:3D:76:8A:21:F0:DE:78:DF:C7:DB:38
+	 SHA256: 00:71:E8:6F:09:0F:88:9F:58:D6:48:9A:DE:FE:FC:25:43:C2:22:65:E1:4A:30:F3:54:08:0B:C5:ED:87:42:31
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 6D D3 6A D6 40 44 8B E5   95 AA E3 44 32 B3 3C F7  m.j.@D.....D2.<.
+0010: 7A 2B 03 9B                                        z+..
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

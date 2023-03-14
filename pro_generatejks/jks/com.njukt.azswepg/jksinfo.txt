@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: sjb
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.njukt.azswepg, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.njukt.azswepg, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: e09ec63
+有效期为 Mon Jan 30 18:27:07 CST 2023 至 Fri Jan 24 18:27:07 CST 2048
+证书指纹:
+	 MD5:  C2:C9:8A:EC:E3:B9:84:54:4B:E3:49:4D:EE:C6:E8:32
+	 SHA1: E1:31:76:5B:65:67:82:73:20:EF:6F:6F:28:AE:E8:3D:EF:6A:F9:02
+	 SHA256: B6:DA:69:69:20:11:9F:3D:4E:41:7D:D2:75:02:83:D9:6E:84:59:40:7F:62:25:1C:26:5D:FF:8A:52:5A:90:36
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: 90 26 54 77 EE 0A 68 37   E1 F7 86 51 EB 1C 2C 58  .&Tw..h7...Q..,X
+0010: 40 B9 24 6D                                        @.$m
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+

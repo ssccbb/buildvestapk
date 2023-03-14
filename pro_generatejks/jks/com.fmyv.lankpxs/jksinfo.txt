@@ -1,0 +1,39 @@
+:  
+密钥库类型: jks
+密钥库提供方: SUN
+
+您的密钥库包含 1 个条目
+
+别名: dzw
+创建日期: 2023-1-30
+条目类型: PrivateKeyEntry
+证书链长度: 1
+证书[1]:
+所有者: CN=com.fmyv.lankpxs, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+发布者: CN=com.fmyv.lankpxs, OU=KQ, O=KQ, L=HZ, ST=HZ, C=CN
+序列号: 1a968c3a
+有效期为 Mon Jan 30 18:26:44 CST 2023 至 Fri Jan 24 18:26:44 CST 2048
+证书指纹:
+	 MD5:  0F:DC:38:42:26:09:3F:EF:57:8C:93:56:1B:88:CE:58
+	 SHA1: 66:8E:88:82:6B:A9:0B:D1:51:45:9D:1C:5A:C1:90:F5:B9:C3:67:1A
+	 SHA256: 4F:49:84:2E:20:04:1D:48:BA:64:79:1C:56:7C:EC:92:0C:3A:FB:04:1A:04:15:92:0C:2A:AE:28:83:D7:CF:79
+签名算法名称: SHA256withRSA
+主体公共密钥算法: 2048 位 RSA 密钥
+版本: 3
+
+扩展: 
+
+#1: ObjectId: 2.5.29.14 Criticality=false
+SubjectKeyIdentifier [
+KeyIdentifier [
+0000: B3 E4 95 E8 05 B3 7A 8C   6D 60 D8 0C FD 52 5D A0  ......z.m`...R].
+0010: 40 47 90 DE                                        @G..
+]
+]
+
+
+
+*******************************************
+*******************************************
+
+
