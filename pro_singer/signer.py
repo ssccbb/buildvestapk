@@ -17,8 +17,8 @@ if __name__ in "__main__":
         jks_file = sys.argv[2]
         jks_alias = sys.argv[3]
         jks_password = sys.argv[4]
-        if '!' in str(jks_password):
-            jks_password = str(jks_password).replace('!', '\!')
+        # if '!' in str(jks_password):
+        #     jks_password = str(jks_password).replace('!', '\!')
     else:
         print(f'use command -->> python3 signer.py [apk] [jks] [alias] [password]')
         exit(-1)
